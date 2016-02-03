@@ -5,8 +5,7 @@
 	.directive('drumMachine', function () {
 		return {
 			templateUrl: './templates/drum-machine.html',
-			controller: 'mainCtrl',
-			replace: true
+			controller: 'mainCtrl'
 		};
 	});
 })();

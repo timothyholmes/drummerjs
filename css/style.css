@@ -1,9 +1,10 @@
 .box {
-    border-radius: 25px;
-	height: 25px;
-	width: 25px;
-	padding: 50px;
+    border-radius: 15px;
+	height: 150px;
+	/*width: 25px;
+	padding: 50px;*/
 	background-color: #9DC0CC;
+	margin-bottom: 15px;
 }
 
 .box:hover {
