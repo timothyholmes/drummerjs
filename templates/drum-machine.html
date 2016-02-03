@@ -1,7 +1,7 @@
 <div class="row" >
 	<div data-ng-repeat="kick in kicks">
 		<div class="col-md-3 col-sm-3 col-xs-3 col-lg-3">	
-			<div class="box" data-ng-class="{'boxsoundon': kick.on}" data-ng-click="kick.on = !kick.on; playSound(kick);"></div>
+			<div class="box" data-ng-class="{'boxsoundon': kick.on}" data-ng-mouseover="playSound(kick)" data-ng-click="kick.on = !kick.on"></div>
 		</div>
 	</div>
 </div>
@@ -9,7 +9,7 @@
 <div class="row" >
 	<div data-ng-repeat="snare in snares">
 		<div class="col-md-3 col-sm-3 col-xs-3 col-lg-3">	
-			<div class="box" data-ng-class="{'boxsoundon': snare.on}" data-ng-mouseover="playSound(snare)" data-ng-click="snare.on = !snare.on; playSound(snare);"></div>
+			<div class="box" data-ng-class="{'boxsoundon': snare.on}" data-ng-mouseover="playSound(snare)" data-ng-click="snare.on = !snare.on"></div>
 		</div>
 	</div>
 </div>
@@ -17,7 +17,7 @@
 <div class="row" >
 	<div data-ng-repeat="hihat in hihats">
 		<div class="col-md-3 col-sm-3 col-xs-3 col-lg-3">	
-			<div class="box" data-ng-class="{'boxsoundon': hihat.on}" data-ng-click="hihat.on = !hihat.on; playSound(hihat);"></div>
+			<div class="box" data-ng-class="{'boxsoundon': hihat.on}" data-ng-mouseover="playSound(hihat)" data-ng-click="hihat.on = !hihat.on"></div>
 		</div>
 	</div>
 </div>
