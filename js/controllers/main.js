@@ -34,5 +34,13 @@
 			if(id > 8)
 				hihat.play();
 		};
+
+		$scope.startTimer = function(){setInterval(function(){
+			console.log("Start Timer");
+		}, 1000)};
+
+		$scope.stopTimer = function(){
+			console.log("Stop Timer");
+		};
 	});
 })();
