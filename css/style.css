@@ -1,6 +1,15 @@
 .box {
+    border-radius: 25px;
 	height: 25px;
 	width: 25px;
 	padding: 50px;
-	background-color: green;
+	background-color: #9DC0CC;
+}
+
+.box:hover {
+	background-color: #000000;
+}
+
+.boxsoundon {
+	background-color: red;
 }
