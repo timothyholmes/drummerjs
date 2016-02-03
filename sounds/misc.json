@@ -1,18 +1,18 @@
 [
 	{
-		"id": "5",
-		"sound": "red"
+		"id": "9",
+		"sound": "./assets/sounds/hihat.mp3"
 	},
 	{
-		"id": "6",
-		"sound": "yellow"
+		"id": "10",
+		"sound": "./assets/sounds/hihat.mp3"
 	},
 	{
-		"id": "7",
-		"sound": "blue"
+		"id": "11",
+		"sound": "./assets/sounds/hihat.mp3"
 	},
 	{
-		"id": "8",
-		"sound": "green"
+		"id": "12",
+		"sound": "./assets/sounds/hihat.mp3"
 	}
 ]

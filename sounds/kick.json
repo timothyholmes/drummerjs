@@ -1,18 +1,18 @@
 [
 	{
 		"id": "1",
-		"sound": "red"
+		"sound": "./assets/sounds/kick.mp3"
 	},
 	{
 		"id": "2",
-		"sound": "yellow"
+		"sound": "./assets/sounds/kick.mp3"
 	},
 	{
 		"id": "3",
-		"sound": "blue"
+		"sound": "./assets/sounds/kick.mp3"
 	},
 	{
 		"id": "4",
-		"sound": "green"
+		"sound": "./assets/sounds/kick.mp3"
 	}
 ]

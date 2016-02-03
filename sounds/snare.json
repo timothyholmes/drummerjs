@@ -1,18 +1,18 @@
 [
 	{
-		"id": "9",
-		"sound": "red"
+		"id": "5",
+		"sound": "./assets/sounds/snare.mp3"
 	},
 	{
-		"id": "10",
-		"sound": "yellow"
+		"id": "6",
+		"sound": "./assets/sounds/snare.mp3"
 	},
 	{
-		"id": "11",
-		"sound": "blue"
+		"id": "7",
+		"sound": "./assets/sounds/snare.mp3"
 	},
 	{
-		"id": "12",
-		"sound": "green"
+		"id": "8",
+		"sound": "./assets/sounds/snare.mp3"
 	}
 ]
