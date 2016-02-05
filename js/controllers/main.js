@@ -59,9 +59,28 @@
 		$scope.startTimer = function() {setInterval(function(){
 			var x = document.getElementsByClassName(beatCols[currentBeat]);
 			
+			var sound1 = {
+				"id": "3",
+				"sound": "./assets/sounds/kick.mp3",
+				"type": "kick",
+				"group": "col3"
+			};
+
+			var sound2 = {
+				"id": "3",
+				"sound": "./assets/sounds/kick.mp3",
+				"type": "snare",
+				"group": "col3"
+			};
+
 			for (var i = 0; i < x.length; i++) {
 			    x[i].style.backgroundColor = "red";
-			}
+			};
+
+			if(currentBeat == 0 || currentBeat == 2)
+				$scope.playSound(sound1);
+			if(currentBeat == 1 || currentBeat == 3)
+				$scope.playSound(sound2);
 
 			currentBeat++;
 			if(currentBeat >= 4) 
