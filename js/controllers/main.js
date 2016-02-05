@@ -10,6 +10,11 @@
 		var snare = new Audio();
 		var hihat = new Audio();
 
+		$scope.groupOneLight = false;
+		$scope.groupTwoLight = false;
+		$scope.groupThreeLight = false;
+		$scope.groupFourLight = false;
+
 		kick.src  = "./assets/sounds/kick.mp3";
 		snare.src = "./assets/sounds/snare.mp3";
 		hihat.src = "./assets/sounds/hihat.mp3";
@@ -44,9 +49,13 @@
 				hihat.play();
 		};
 
-		$scope.startTimer = function(){setInterval(function(){
+		$scope.getClass = function(ele) {
+			return ele.group;
+		};
+
+		$scope.startTimer = function(){
 			console.log("Start Timer");
-		}, 1000)};
+		};
 
 		$scope.stopTimer = function(){
 			console.log("Stop Timer");

@@ -1,8 +1,6 @@
 .box {
     border-radius: 15px;
 	height: 150px;
-	/*width: 25px;
-	padding: 50px;*/
 	background-color: #9DC0CC;
 	margin-bottom: 15px;
 }
@@ -13,4 +11,8 @@
 
 .boxsoundon {
 	background-color: #96DBF2;
+}
+
+.col3 {
+	background-color: red;
 }

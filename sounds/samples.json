@@ -3,72 +3,72 @@
 		"id": "1",
 		"sound": "./assets/sounds/kick.mp3",
 		"type": "kick",
-		"group": "1"
+		"group": "col1"
 	},
 	{
 		"id": "2",
 		"sound": "./assets/sounds/kick.mp3",
 		"type": "kick",
-		"group": "2"
+		"group": "col2"
 	},
 	{
 		"id": "3",
 		"sound": "./assets/sounds/kick.mp3",
 		"type": "kick",
-		"group": "3"
+		"group": "col3"
 	},
 	{
 		"id": "4",
 		"sound": "./assets/sounds/kick.mp3",
 		"type": "kick",
-		"group": "4"
+		"group": "col4"
 	},	
 	{
 		"id": "5",
 		"sound": "./assets/sounds/snare.mp3",
 		"type": "snare",
-		"group": "1"
+		"group": "col1"
 	},
 	{
 		"id": "6",
 		"sound": "./assets/sounds/snare.mp3",
 		"type": "snare",
-		"group": "2"
+		"group": "col2"
 	},
 	{
 		"id": "7",
 		"sound": "./assets/sounds/snare.mp3",
 		"type": "snare",
-		"group": "3"
+		"group": "col3"
 	},
 	{
 		"id": "8",
 		"sound": "./assets/sounds/snare.mp3",
 		"type": "snare",
-		"group": "4"
+		"group": "col4"
 	},	
 	{
 		"id": "9",
 		"sound": "./assets/sounds/hihat.mp3",
 		"type": "hihat",
-		"group": "1"
+		"group": "col1"
 	},
 	{
 		"id": "10",
 		"sound": "./assets/sounds/hihat.mp3",
 		"type": "hihat",
-		"group": "2"
+		"group": "col2"
 	},
 	{
 		"id": "11",
 		"sound": "./assets/sounds/hihat.mp3",
 		"type": "hihat",
-		"group": "3"
+		"group": "col3"
 	},
 	{
 		"id": "12",
 		"sound": "./assets/sounds/hihat.mp3",
 		"type": "hihat",
-		"group": "4"
+		"group": "col4"
 	}
 ]
