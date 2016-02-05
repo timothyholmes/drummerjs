@@ -10,6 +10,9 @@
 		var snare = new Audio();
 		var hihat = new Audio();
 
+		var currentBeat = 0;
+		var beatCols = ['col1', 'col2', 'col3', 'col4'];
+
 		$scope.groupOneLight = false;
 		$scope.groupTwoLight = false;
 		$scope.groupThreeLight = false;
@@ -53,9 +56,17 @@
 			return ele.group;
 		};
 
-		$scope.startTimer = function(){
-			console.log("Start Timer");
-		};
+		$scope.startTimer = function() {setInterval(function(){
+			var x = document.getElementsByClassName(beatCols[currentBeat]);
+			
+			for (var i = 0; i < x.length; i++) {
+			    x[i].style.backgroundColor = "red";
+			}
+
+			currentBeat++;
+			if(currentBeat >= 4) 
+				currentBeat = 0;
+		}, 500)};
 
 		$scope.stopTimer = function(){
 			console.log("Stop Timer");
