@@ -104,7 +104,25 @@
 		}, 500)};
 
 		$scope.stopTimer = function(){
-			console.log("Stop Timer");
+
+			var nonCurrentBeats = beatOptions.filter(function(e) {
+				return e != currentBeat;
+			});
+
+			var x = document.getElementsByClassName(beatCols[currentBeat]);
+			var y = document.getElementsByClassName(beatCols[nonCurrentBeats[0]]);
+			var w = document.getElementsByClassName(beatCols[nonCurrentBeats[1]]);
+			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
+
+			for (var i = 0; i < x.length; i++) {
+			    x[i].style.backgroundColor = "#9DC0CC";
+			    y[i].style.backgroundColor = "#9DC0CC";
+			    w[i].style.backgroundColor = "#9DC0CC";
+			    z[i].style.backgroundColor = "#9DC0CC";
+			};
+
+			currentBeat = 0;
+
 			clearInterval(refreshInterval);
 		};
 	});
