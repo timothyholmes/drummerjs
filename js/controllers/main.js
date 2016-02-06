@@ -6,12 +6,28 @@
 
 	.controller('mainCtrl', function($scope, dataManager){
 
+		var refreshInterval;
+
 		var kick  = new Audio();
 		var snare = new Audio();
 		var hihat = new Audio();
 
 		var currentBeat = 0;
 		var beatCols = ['col1', 'col2', 'col3', 'col4'];
+
+		var sound1 = {
+			"id": "3",
+			"sound": "./assets/sounds/kick.mp3",
+			"type": "kick",
+			"group": "col3"
+		};
+
+		var sound2 = {
+			"id": "3",
+			"sound": "./assets/sounds/kick.mp3",
+			"type": "snare",
+			"group": "col3"
+		};
 
 		$scope.groupOneLight = false;
 		$scope.groupTwoLight = false;
@@ -56,22 +72,21 @@
 			return ele.group;
 		};
 
-		$scope.startTimer = function() {setInterval(function(){
-			var x = document.getElementsByClassName(beatCols[currentBeat]);
-			
-			var sound1 = {
-				"id": "3",
-				"sound": "./assets/sounds/kick.mp3",
-				"type": "kick",
-				"group": "col3"
-			};
+		$scope.startTimer = function() {
 
-			var sound2 = {
-				"id": "3",
-				"sound": "./assets/sounds/kick.mp3",
-				"type": "snare",
-				"group": "col3"
-			};
+			refreshInterval = setInterval(function(){
+			var nonCurrentBeats = beatCols.filter(function(e) {
+				return e != beatCols[currentBeat];
+			});
+
+			var x = document.getElementsByClassName(beatCols[currentBeat]);
+			var y = document.getElementsByClassName(beatCols[nonCurrentBeats[0]]);
+			var w = document.getElementsByClassName(beatCols[nonCurrentBeats[1]]);
+			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
+
+			console.log(y);
+			console.log(z);
+			console.log(w);
 
 			for (var i = 0; i < x.length; i++) {
 			    x[i].style.backgroundColor = "red";
@@ -85,10 +100,11 @@
 			currentBeat++;
 			if(currentBeat >= 4) 
 				currentBeat = 0;
-		}, 500)};
+		}, 1000)};
 
 		$scope.stopTimer = function(){
 			console.log("Stop Timer");
+			clearInterval(refreshInterval);
 		};
 	});
 })();
