@@ -7,6 +7,7 @@
 	.controller('mainCtrl', function($scope, dataManager){
 
 		var refreshInterval;
+		var beatOptions = [0, 1, 2, 3];
 
 		var kick  = new Audio();
 		var snare = new Audio();
@@ -75,8 +76,9 @@
 		$scope.startTimer = function() {
 
 			refreshInterval = setInterval(function(){
-			var nonCurrentBeats = beatCols.filter(function(e) {
-				return e != beatCols[currentBeat];
+
+			var nonCurrentBeats = beatOptions.filter(function(e) {
+				return e != currentBeat;
 			});
 
 			var x = document.getElementsByClassName(beatCols[currentBeat]);
@@ -84,12 +86,11 @@
 			var w = document.getElementsByClassName(beatCols[nonCurrentBeats[1]]);
 			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
 
-			console.log(y);
-			console.log(z);
-			console.log(w);
-
 			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "red";
+			    x[i].style.backgroundColor = "#4089A1";
+			    y[i].style.backgroundColor = "#9DC0CC";
+			    w[i].style.backgroundColor = "#9DC0CC";
+			    z[i].style.backgroundColor = "#9DC0CC";
 			};
 
 			if(currentBeat == 0 || currentBeat == 2)
@@ -100,7 +101,7 @@
 			currentBeat++;
 			if(currentBeat >= 4) 
 				currentBeat = 0;
-		}, 1000)};
+		}, 500)};
 
 		$scope.stopTimer = function(){
 			console.log("Stop Timer");
