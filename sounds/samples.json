@@ -2,38 +2,32 @@
 	{
 		"id": "1",
 		"type": "kick",
-		"group": "col1",
-		"on": false
+		"group": "col1"
 	},
 	{
 		"id": "2",
 		"type": "kick",
-		"group": "col2",
-		"on": false
+		"group": "col2"
 	},
 	{
 		"id": "3",
 		"type": "kick",
-		"group": "col3",
-		"on": false
+		"group": "col3"
 	},
 	{
 		"id": "4",
 		"type": "kick",
-		"group": "col4",
-		"on": false
+		"group": "col4"
 	},	
 	{
 		"id": "5",
 		"type": "snare",
-		"group": "col1",
-		"on": false
+		"group": "col1"
 	},
 	{
 		"id": "6",
 		"type": "snare",
-		"group": "col2",
-		"on": false
+		"group": "col2"
 	},
 	{
 		"id": "7",
