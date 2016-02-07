@@ -44,35 +44,36 @@
 		var second = [];
 		var third = [];
 		var fourth = [];
+		var samples = [];
 
 		dataManager.getData('./sounds/samples.json', function(response) {
-			$scope.samples = response.data;
+			samples = response.data;
 
-			$scope.kicks = $scope.samples.filter(function(e) {
+			$scope.kicks = samples.filter(function(e) {
 				return e.type == 'kick';
 			});
 
-			$scope.snares = $scope.samples.filter(function(e) {
+			$scope.snares = samples.filter(function(e) {
 				return e.type == 'snare';
 			});
 
-			$scope.hihats = $scope.samples.filter(function(e) {
+			$scope.hihats = samples.filter(function(e) {
 				return e.type == 'hihat';
 			});
 
-			first = $scope.samples.filter(function(e) {
+			first = samples.filter(function(e) {
 				return e.group == 'col1';
 			});
 
-			second = $scope.samples.filter(function(e) {
+			second = samples.filter(function(e) {
 				return e.group == 'col2';
 			});
 
-			third = $scope.samples.filter(function(e) {
+			third = samples.filter(function(e) {
 				return e.group == 'col3';
 			});
 
-			fourth = $scope.samples.filter(function(e) {
+			fourth = samples.filter(function(e) {
 				return e.group == 'col4';
 			});
 		});
@@ -153,6 +154,11 @@
 			currentBeat = 0;
 
 			clearInterval(refreshInterval);
+		};
+
+		$scope.clearPads = function() {
+			for(var i = 0; i < samples.length; i++)
+				samples[i].on = false;
 		};
 	});
 })();
