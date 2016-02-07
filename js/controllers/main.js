@@ -20,6 +20,7 @@
 			"id": "3",
 			"sound": "./assets/sounds/kick.mp3",
 			"type": "kick",
+			"on": true,
 			"group": "col3"
 		};
 
@@ -58,15 +59,33 @@
 			$scope.hihats = $scope.samples.filter(function(e) {
 				return e.type == 'hihat';
 			});
+
+			first = $scope.samples.filter(function(e) {
+				return e.group == 'col1';
+			});
+
+			second = $scope.samples.filter(function(e) {
+				return e.group == 'col2';
+			});
+
+			third = $scope.samples.filter(function(e) {
+				return e.group == 'col3';
+			});
+
+			fourth = $scope.samples.filter(function(e) {
+				return e.group == 'col4';
+			});
 		});
 
 		$scope.playSound = function(sound) {
-			if(sound.type == 'kick')
-				kick.play();
-			if(sound.type == 'snare')
-				snare.play();
-			if(sound.type == 'hihat')
-				hihat.play();
+			if(sound.on == true) {
+				if(sound.type == 'kick')
+					kick.play();
+				if(sound.type == 'snare')
+					snare.play();
+				if(sound.type == 'hihat')
+					hihat.play();
+			}
 		};
 
 		$scope.getClass = function(ele) {
@@ -76,6 +95,8 @@
 		$scope.startTimer = function() {
 
 			refreshInterval = setInterval(function(){
+
+			var arrayToSend;
 
 			var nonCurrentBeats = beatOptions.filter(function(e) {
 				return e != currentBeat;
@@ -93,10 +114,18 @@
 			    z[i].style.backgroundColor = "#9DC0CC";
 			};
 
-			if(currentBeat == 0 || currentBeat == 2)
-				$scope.playSound(sound1);
-			if(currentBeat == 1 || currentBeat == 3)
-				$scope.playSound(sound2);
+			if(currentBeat == 0)
+				arrayToSend = first;
+			if(currentBeat == 1)
+				arrayToSend = second;
+			if(currentBeat == 2)
+				arrayToSend = third;
+			if(currentBeat == 3)
+				arrayToSend = fourth;
+
+			for (var i = 0; i < arrayToSend.length; i++) {
+				$scope.playSound(arrayToSend[i]);
+			}
 
 			currentBeat++;
 			if(currentBeat >= 4) 
