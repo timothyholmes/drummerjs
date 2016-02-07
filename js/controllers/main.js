@@ -108,10 +108,10 @@
 			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
 
 			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "#4089A1";
-			    y[i].style.backgroundColor = "#9DC0CC";
-			    w[i].style.backgroundColor = "#9DC0CC";
-			    z[i].style.backgroundColor = "#9DC0CC";
+			    x[i].style.backgroundColor = "#F0720C";
+			    y[i].style.backgroundColor = "#F0D50C";
+			    w[i].style.backgroundColor = "#F0D50C";
+			    z[i].style.backgroundColor = "#F0D50C";
 			};
 
 			if(currentBeat == 0)
@@ -144,10 +144,10 @@
 			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
 
 			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "#9DC0CC";
-			    y[i].style.backgroundColor = "#9DC0CC";
-			    w[i].style.backgroundColor = "#9DC0CC";
-			    z[i].style.backgroundColor = "#9DC0CC";
+			    x[i].style.backgroundColor = "#F0D50C";
+			    y[i].style.backgroundColor = "#F0D50C";
+			    w[i].style.backgroundColor = "#F0D50C";
+			    z[i].style.backgroundColor = "#F0D50C";
 			};
 
 			currentBeat = 0;

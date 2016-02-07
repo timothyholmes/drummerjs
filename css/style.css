@@ -12,3 +12,10 @@
 .boxsoundon {
 	background-color: #96DBF2;
 }
+
+.beatMarker {
+	border-radius: 50px;
+	height: 50px;
+	background-color: #F0D50C;
+	margin-bottom: 15px;
+}
