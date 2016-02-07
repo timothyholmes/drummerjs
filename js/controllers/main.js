@@ -121,8 +121,6 @@
 			var c = document.getElementsByClassName(beatCols[nonCurrentBeats[5]]);
 			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
 
-			console.log(z);
-
 			for (var i = 0; i < x.length; i++) {
 			    x[i].style.backgroundColor = "#F0720C";
 			    y[i].style.backgroundColor = "#F0D50C";
