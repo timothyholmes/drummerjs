@@ -5,5 +5,10 @@
 		<button type="button" class="btn btn-danger" data-ng-click="stopTimer()"><span class="glyphicon glyphicon-stop"></span> Stop</button>
 		<button type="button" class="btn btn-info" data-ng-click="clearPads()"><span class="glyphicon glyphicon-trash"></span> Clear</button>
 	</div>
+	<div class=row>
+		<button type=button class="btn btn-danger" data-ng-click="subtractBpm()"><span class="glyphicon glyphicon-minus"></span> </button>
+		{{ bpm }}
+		<button type=button class="btn btn-success" data-ng-click="addBpm()"><span class="glyphicon glyphicon-plus"></span> </button>
+	</div>
 </header>
 <hr>

@@ -106,8 +106,6 @@
 
 		$scope.startTimer = function() {
 
-			tempoSet($scope.bpm);
-
 			refreshInterval = setInterval(function(){
 
 			var arrayToSend;
@@ -160,7 +158,7 @@
 			currentBeat++;
 			if(currentBeat >= 8) 
 				currentBeat = 0;
-		}, 250)};
+		}, tempoSet($scope.bpm))};
 
 		$scope.stopTimer = function(){
 
@@ -196,6 +194,14 @@
 		$scope.clearPads = function() {
 			for(var i = 0; i < samples.length; i++)
 				samples[i].on = false;
+		};
+
+		$scope.addBpm = function() {
+			$scope.bpm++;
+		};
+
+		$scope.subtractBpm = function() {
+			$scope.bpm--;
 		};
 
 		var tempoSet = function(bpm) {
