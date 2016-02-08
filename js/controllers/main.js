@@ -13,6 +13,8 @@
 		var snare = new Audio();
 		var hihat = new Audio();
 
+		$scope.bpm = 120;
+
 		var currentBeat = 0;
 		var beatCols = ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7', 'col8'];
 
@@ -104,6 +106,8 @@
 
 		$scope.startTimer = function() {
 
+			tempoSet($scope.bpm);
+
 			refreshInterval = setInterval(function(){
 
 			var arrayToSend;
@@ -193,5 +197,9 @@
 			for(var i = 0; i < samples.length; i++)
 				samples[i].on = false;
 		};
+
+		var tempoSet = function(bpm) {
+			return 60000 / (2 * bpm)
+		}
 	});
 })();
