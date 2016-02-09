@@ -1,17 +1,21 @@
 <header class=container>
 	<div class=row>
 		<h1>drummerjs</h1>
-		<button type="button" class="btn btn-success" data-ng-click="startTimer()"><span class="glyphicon glyphicon-play"></span> Start</button>
-		<button type="button" class="btn btn-danger" data-ng-click="stopTimer()"><span class="glyphicon glyphicon-stop"></span> Stop</button>
+		<button type="button" class="btn btn-success" data-ng-click="startTimer(); startLoop = !startLoop"><span class="glyphicon glyphicon-play"></span> Start</button>
+		<button type="button" class="btn btn-danger" data-ng-click="stopTimer(); startLoop = !startLoop"><span class="glyphicon glyphicon-stop"></span> Stop</button>
 		<button type="button" class="btn btn-info" data-ng-click="clearPads()"><span class="glyphicon glyphicon-trash"></span> Clear</button>
 	</div>
 	<div class=row>
 		<h3>BPM:</h3>
-		<button type=button class="btn btn-danger" data-ng-click="subtractBpm()"><span class="glyphicon glyphicon-minus"></span> </button>
-        <label data-ng-click=" editing = !editing" data-ng-hide="editing">{{ bpm }}</label>
-        <input data-ng-change="todo.edited = true" data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text"/>
-
-		<button type=button class="btn btn-success" data-ng-click="addBpm()"><span class="glyphicon glyphicon-plus"></span> </button>
+		<button type=button class="btn btn-danger" data-ng-click="subtractBpm()" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-minus"></span> </button>
+		<span data-ng-hide="startLoop">
+        	<label data-ng-click="editing = !editing" data-ng-hide="editing">{{ bpm }}</label>
+        	<input data-ng-change="todo.edited = true" data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text" data-ng-disabled="startLoop"/>
+        </span>
+        <span>
+        	<label data-ng-hide="!startLoop">{{ bpm }}</label>
+        </span>
+		<button type=button class="btn btn-success" data-ng-click="addBpm()" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-plus"></span> </button>
 	</div>
 </header>
 <hr>

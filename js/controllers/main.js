@@ -14,6 +14,7 @@
 		var hihat = new Audio();
 
 		$scope.bpm = 120;
+		$scope.startLoop = false;
 
 		var currentBeat = 0;
 		var beatCols = ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7', 'col8'];
@@ -88,6 +89,10 @@
 				return e.group == 'col8';
 			});
 		});
+
+		$scope.loopingStatus = function() {
+			return $scope.startLoop;
+		}
 
 		$scope.playSound = function(sound) {
 			if(sound.on == true) {
