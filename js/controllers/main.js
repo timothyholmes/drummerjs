@@ -37,7 +37,7 @@
 		var eighth = [];
 		var samples = [];
 
-		dataManager.getData('./sounds/samples.json', function(response) {
+		dataManager.getData('./config/samples.json', function(response) {
 			samples = response.data;
 
 			$scope.kicks = samples.filter(function(e) {
