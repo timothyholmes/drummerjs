@@ -106,6 +106,8 @@
 
 		$scope.startTimer = function() {
 
+			clearInterval(refreshInterval);
+
 			refreshInterval = setInterval(function(){
 
 			var arrayToSend;
