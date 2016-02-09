@@ -6,8 +6,8 @@
 		<button type="button" class="btn btn-info" data-ng-click="clearPads()"><span class="glyphicon glyphicon-trash"></span> Clear</button>
 	</div>
 	<div class=row>
+		<h3>BPM:</h3>
 		<button type=button class="btn btn-danger" data-ng-click="subtractBpm()"><span class="glyphicon glyphicon-minus"></span> </button>
-
         <label data-ng-click=" editing = !editing" data-ng-hide="editing">{{ bpm }}</label>
         <input data-ng-change="todo.edited = true" data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text"/>
 
