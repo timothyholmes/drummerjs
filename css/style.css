@@ -1,8 +1,17 @@
 .box {
     border-radius: 15px;
-	height: 85px;
 	background-color: #9DC0CC;
-	margin-bottom: 15px;
+	height: 125px;
+	width:125px;
+	display: inline-block;
+}
+
+.beatMarker {
+	border-radius: 15px;
+	background-color: #F0D50C;
+	height: 50px;
+	width:125px;
+	display: inline-block;
 }
 
 .box:hover {
@@ -13,13 +22,11 @@
 	background-color: #96DBF2;
 }
 
-.beatMarker {
-	border-radius: 50px;
-	height: 50px;
-	background-color: #F0D50C;
-	margin-bottom: 15px;
-}
 
 .noedit {
 	color: #888888;
+}
+
+#grid {
+	min-width: 1200px;
 }
