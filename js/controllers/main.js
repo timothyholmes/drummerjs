@@ -198,6 +198,10 @@
 			clearInterval(refreshInterval);
 		};
 
+		$scope.pauseTimer = function() {
+			clearInterval(refreshInterval);
+		};
+
 		$scope.clearPads = function() {
 			for(var i = 0; i < samples.length; i++)
 				samples[i].on = false;
