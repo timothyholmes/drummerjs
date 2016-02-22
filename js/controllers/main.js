@@ -15,6 +15,7 @@
 
 		$scope.bpm = 120;
 		$scope.startLoop = false;
+		$scope.paued = false;
 
 		var currentBeat = 0;
 		var beatCols = ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7', 'col8'];
@@ -199,7 +200,10 @@
 		};
 
 		$scope.pauseTimer = function() {
-			clearInterval(refreshInterval);
+			if($scope.paused == false)
+				clearInterval(refreshInterval);
+			else 
+				$scope.startTimer();
 		};
 
 		$scope.clearPads = function() {

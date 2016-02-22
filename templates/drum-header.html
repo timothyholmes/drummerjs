@@ -1,22 +1,21 @@
 <header class=container>
 	<div class=row>
 		<h1>drummerjs</h1>
-		<button type=button class="btn btn-success" data-ng-click="startTimer(); startLoop = !startLoop" data-ng-disabled=""><span class="glyphicon glyphicon-play"></span></button>
-		<button type=button class="btn btn-warning" data-ng-click="pauseTimer();" data-ng-disabled="!startLoop"><span class="glyphicon glyphicon-pause"></span></button>
+		<button type=button class="btn btn-success" data-ng-click="startTimer(); startLoop = !startLoop; paused = false" data-ng-hide="startLoop"><span class="glyphicon glyphicon-play"></span></button>
+		<button type=button class="btn btn-success" data-ng-click="pauseTimer(); paused = false;" data-ng-show="startLoop && paused == true"><span class="glyphicon glyphicon-play"></span></button>
+		<button type=button class="btn btn-warning" data-ng-click="pauseTimer(); paused = true;" data-ng-show="startLoop && paused == false"><span class="glyphicon glyphicon-pause"></span></button>
 		<button type=button class="btn btn-danger" data-ng-click="stopTimer(); startLoop = !startLoop" data-ng-disabled="!startLoop"><span class="glyphicon glyphicon-stop"></span></button>
 		<button type=button class="btn btn-info" data-ng-click="clearPads()"><span class="glyphicon glyphicon-trash"></span></button>
 	</div>
 	<div class=row>
 		<h3>BPM:</h3>
-		<button type=button class="btn btn-danger" data-ng-click="subtractBpm()" data-ng-disabled="startLoop || bpm == 80;"><span class="glyphicon glyphicon-minus"></span></button>
+		<button type=button class="btn btn-danger" data-ng-click="subtractBpm()" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-minus"></span></button>
 		<span data-ng-hide="startLoop">
-        	<label>{{ bpm }}</label>
-        	<!--
-			data-ng-click="editing = !editing" data-ng-hide="editing"
-        	input type='number' min='80' max='140' data-ng-change="todo.edited = true" data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text"/>-->
+        	<label data-ng-click="editing = !editing" data-ng-hide="editing">{{ bpm }}</label>
+        	<input data-ng-change="todo.edited = true" data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text"/>
         </span>
         <span class="noedit" data-ng-hide="!startLoop">{{ bpm }}</span>
-		<button type=button class="btn btn-success" data-ng-click="addBpm()" data-ng-disabled="startLoop || bpm == 140;"><span class="glyphicon glyphicon-plus"></span></button>
+		<button type=button class="btn btn-success" data-ng-click="addBpm()" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-plus"></span></button>
 	</div>
 </header>
 <hr>
