@@ -133,13 +133,13 @@
 
 			for (var i = 0; i < x.length; i++) {
 			    x[i].style.backgroundColor = "#96DBF2";
-			    y[i].style.backgroundColor = "#9DC0CC";
-			    w[i].style.backgroundColor = "#9DC0CC";
-			    z[i].style.backgroundColor = "#9DC0CC";
-			    a[i].style.backgroundColor = "#9DC0CC";
-			    b[i].style.backgroundColor = "#9DC0CC";
-			    c[i].style.backgroundColor = "#9DC0CC";
-			    d[i].style.backgroundColor = "#9DC0CC";
+			    y[i].style.backgroundColor = "#00FF80";
+			    w[i].style.backgroundColor = "#00FF80";
+			    z[i].style.backgroundColor = "#00FF80";
+			    a[i].style.backgroundColor = "#00FF80";
+			    b[i].style.backgroundColor = "#00FF80";
+			    c[i].style.backgroundColor = "#00FF80";
+			    d[i].style.backgroundColor = "#00FF80";
 			};
 
 			if(currentBeat == 0)
@@ -184,14 +184,14 @@
 			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
 
 			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "#9DC0CC";
-			    y[i].style.backgroundColor = "#9DC0CC";
-			    w[i].style.backgroundColor = "#9DC0CC";
-			    z[i].style.backgroundColor = "#9DC0CC";
-			    a[i].style.backgroundColor = "#9DC0CC";
-			    b[i].style.backgroundColor = "#9DC0CC";
-			    c[i].style.backgroundColor = "#9DC0CC";
-			    d[i].style.backgroundColor = "#9DC0CC";
+			    x[i].style.backgroundColor = "#00FF80";
+			    y[i].style.backgroundColor = "#00FF80";
+			    w[i].style.backgroundColor = "#00FF80";
+			    z[i].style.backgroundColor = "#00FF80";
+			    a[i].style.backgroundColor = "#00FF80";
+			    b[i].style.backgroundColor = "#00FF80";
+			    c[i].style.backgroundColor = "#00FF80";
+			    d[i].style.backgroundColor = "#00FF80";
 			};
 
 			currentBeat = 0;
