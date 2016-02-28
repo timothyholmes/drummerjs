@@ -132,7 +132,7 @@
 			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
 
 			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "#96DBF2";
+			    x[i].style.backgroundColor = "#FF0048";
 			    y[i].style.backgroundColor = "#00FF80";
 			    w[i].style.backgroundColor = "#00FF80";
 			    z[i].style.backgroundColor = "#00FF80";
