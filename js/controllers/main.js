@@ -131,16 +131,14 @@
 			var c = document.getElementsByClassName(beatCols[nonCurrentBeats[5]]);
 			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
 
-			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "#FF0048";
-			    y[i].style.backgroundColor = "#00FF80";
-			    w[i].style.backgroundColor = "#00FF80";
-			    z[i].style.backgroundColor = "#00FF80";
-			    a[i].style.backgroundColor = "#00FF80";
-			    b[i].style.backgroundColor = "#00FF80";
-			    c[i].style.backgroundColor = "#00FF80";
-			    d[i].style.backgroundColor = "#00FF80";
-			};
+			x[0].style.backgroundColor = "#FF0048";
+			y[0].style.backgroundColor = "#00FF80";
+			w[0].style.backgroundColor = "#00FF80";
+			z[0].style.backgroundColor = "#00FF80";
+			a[0].style.backgroundColor = "#00FF80";
+			b[0].style.backgroundColor = "#00FF80";
+			c[0].style.backgroundColor = "#00FF80";
+			d[0].style.backgroundColor = "#00FF80";
 
 			if(currentBeat == 0)
 				arrayToSend = first;
@@ -183,16 +181,14 @@
 			var c = document.getElementsByClassName(beatCols[nonCurrentBeats[5]]);
 			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
 
-			for (var i = 0; i < x.length; i++) {
-			    x[i].style.backgroundColor = "#00FF80";
-			    y[i].style.backgroundColor = "#00FF80";
-			    w[i].style.backgroundColor = "#00FF80";
-			    z[i].style.backgroundColor = "#00FF80";
-			    a[i].style.backgroundColor = "#00FF80";
-			    b[i].style.backgroundColor = "#00FF80";
-			    c[i].style.backgroundColor = "#00FF80";
-			    d[i].style.backgroundColor = "#00FF80";
-			};
+			x[0].style.backgroundColor = "#00FF80";
+			y[0].style.backgroundColor = "#00FF80";
+			w[0].style.backgroundColor = "#00FF80";
+			z[0].style.backgroundColor = "#00FF80";
+			a[0].style.backgroundColor = "#00FF80";
+			b[0].style.backgroundColor = "#00FF80";
+			c[0].style.backgroundColor = "#00FF80";
+			d[0].style.backgroundColor = "#00FF80";
 
 			currentBeat = 0;
 
