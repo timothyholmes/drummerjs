@@ -20,23 +20,18 @@
 		var currentBeat = 0;
 		var beatCols = ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7', 'col8'];
 
-		$scope.groupOneLight = false;
-		$scope.groupTwoLight = false;
-		$scope.groupThreeLight = false;
-		$scope.groupFourLight = false;
-
 		kick.src  = "./assets/sounds/kick.mp3";
 		snare.src = "./assets/sounds/snare.mp3";
 		hihat.src = "./assets/sounds/hihat.mp3";
 
-		var first = [];
-		var second = [];
-		var third = [];
-		var fourth = [];
-		var fifth = [];
-		var sixth = [];
+		var first   = [];
+		var second  = [];
+		var third   = [];
+		var fourth  = [];
+		var fifth   = [];
+		var sixth   = [];
 		var seventh = [];
-		var eighth = [];
+		var eighth  = [];
 		var samples = [];
 
 		dataManager.getData('./config/samples.json', function(response) {
