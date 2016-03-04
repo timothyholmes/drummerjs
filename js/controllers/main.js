@@ -17,22 +17,13 @@
 		$scope.startLoop = false;
 		$scope.paued = false;
 
+		var samples = [];
 		var currentBeat = 0;
 		var beatCols = ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7', 'col8'];
 
 		kick.src  = "./assets/sounds/kick.mp3";
 		snare.src = "./assets/sounds/snare.mp3";
 		hihat.src = "./assets/sounds/hihat.mp3";
-
-		var first   = [];
-		var second  = [];
-		var third   = [];
-		var fourth  = [];
-		var fifth   = [];
-		var sixth   = [];
-		var seventh = [];
-		var eighth  = [];
-		var samples = [];
 
 		dataManager.getData('./config/samples.json', function(response) {
 			samples = response.data;
@@ -51,38 +42,6 @@
 
 			$scope.markers = samples.filter(function(e) {
 				return e.type == 'marker';
-			});
-
-			first = samples.filter(function(e) {
-				return e.group == 'col1';
-			});
-
-			second = samples.filter(function(e) {
-				return e.group == 'col2';
-			});
-
-			third = samples.filter(function(e) {
-				return e.group == 'col3';
-			});
-
-			fourth = samples.filter(function(e) {
-				return e.group == 'col4';
-			});
-
-			fifth = samples.filter(function(e) {
-				return e.group == 'col5';
-			});
-
-			sixth = samples.filter(function(e) {
-				return e.group == 'col6';
-			});
-
-			seventh = samples.filter(function(e) {
-				return e.group == 'col7';
-			});
-
-			eighth = samples.filter(function(e) {
-				return e.group == 'col8';
 			});
 		});
 
@@ -135,22 +94,39 @@
 			c[0].style.backgroundColor = "#00FF80";
 			d[0].style.backgroundColor = "#00FF80";
 
-			if(currentBeat == 0)
-				arrayToSend = first;
-			if(currentBeat == 1)
-				arrayToSend = second;
-			if(currentBeat == 2)
-				arrayToSend = third;
-			if(currentBeat == 3)
-				arrayToSend = fourth;
-			if(currentBeat == 4)
-				arrayToSend = fifth;
-			if(currentBeat == 5)
-				arrayToSend = sixth;
-			if(currentBeat == 6)
-				arrayToSend = seventh;
-			if(currentBeat == 7)
-				arrayToSend = eighth;
+			if(currentBeat == 0) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col1';
+				});
+			} else if(currentBeat == 1) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col2';
+				});
+			} else if(currentBeat == 2) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col3';
+				});
+			} else if(currentBeat == 3) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col4';
+				});
+			} else if(currentBeat == 4) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col5';
+				});
+			} else if(currentBeat == 5) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col6';
+				});
+			} else if(currentBeat == 6) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col7';
+				});
+			} else if(currentBeat == 7) {
+				arrayToSend = samples.filter(function(e) {
+					return e.group == 'col8';
+				});
+			}
 
 			for (var i = 0; i < arrayToSend.length; i++) {
 				$scope.playSound(arrayToSend[i]);
