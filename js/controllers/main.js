@@ -94,39 +94,9 @@
 			c[0].style.backgroundColor = "#00FF80";
 			d[0].style.backgroundColor = "#00FF80";
 
-			if(currentBeat == 0) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col1';
-				});
-			} else if(currentBeat == 1) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col2';
-				});
-			} else if(currentBeat == 2) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col3';
-				});
-			} else if(currentBeat == 3) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col4';
-				});
-			} else if(currentBeat == 4) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col5';
-				});
-			} else if(currentBeat == 5) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col6';
-				});
-			} else if(currentBeat == 6) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col7';
-				});
-			} else if(currentBeat == 7) {
-				arrayToSend = samples.filter(function(e) {
-					return e.group == 'col8';
-				});
-			}
+			arrayToSend = samples.filter(function(e) {
+				return e.group == beatCols[currentBeat];
+			});
 
 			for (var i = 0; i < arrayToSend.length; i++) {
 				$scope.playSound(arrayToSend[i]);
