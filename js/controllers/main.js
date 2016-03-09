@@ -4,7 +4,7 @@
 
 	angular.module('drummerJS')
 
-	.controller('mainCtrl', function($scope, dataManager){
+	.controller('MainController', function($scope, dataManager){
 
 		var refreshInterval;
 		var beatOptions = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -70,69 +70,31 @@
 
 			refreshInterval = setInterval(function(){
 
-			var arrayToSend;
+				var arrayToSend = [];
+				var x = document.getElementsByClassName('beatMarker');
 
-			var nonCurrentBeats = beatOptions.filter(function(e) {
-				return e != currentBeat;
-			});
+				for(var i = 0; i < x.length; i++) {
+					x[i].style.backgroundColor = "#00FF80";
+				}
 
-			var x = document.getElementsByClassName(beatCols[currentBeat]);
-			var y = document.getElementsByClassName(beatCols[nonCurrentBeats[0]]);
-			var w = document.getElementsByClassName(beatCols[nonCurrentBeats[1]]);
-			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
-			var a = document.getElementsByClassName(beatCols[nonCurrentBeats[3]]);
-			var b = document.getElementsByClassName(beatCols[nonCurrentBeats[4]]);
-			var c = document.getElementsByClassName(beatCols[nonCurrentBeats[5]]);
-			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
+				document.getElementsByClassName(beatCols[currentBeat])[0].style.backgroundColor = "#FF0048";
 
-			x[0].style.backgroundColor = "#FF0048";
-			y[0].style.backgroundColor = "#00FF80";
-			w[0].style.backgroundColor = "#00FF80";
-			z[0].style.backgroundColor = "#00FF80";
-			a[0].style.backgroundColor = "#00FF80";
-			b[0].style.backgroundColor = "#00FF80";
-			c[0].style.backgroundColor = "#00FF80";
-			d[0].style.backgroundColor = "#00FF80";
+				arrayToSend = samples.filter(function(e) {
+					return e.group == beatCols[currentBeat];
+				});
 
-			arrayToSend = samples.filter(function(e) {
-				return e.group == beatCols[currentBeat];
-			});
+				for (var i = 0; i < arrayToSend.length; i++) {
+					$scope.playSound(arrayToSend[i]);
+				}
 
-			for (var i = 0; i < arrayToSend.length; i++) {
-				$scope.playSound(arrayToSend[i]);
-			}
-
-			currentBeat++;
-			if(currentBeat >= 8) 
-				currentBeat = 0;
-		}, tempoSet($scope.bpm))};
+				currentBeat++;
+				if(currentBeat >= 8) 
+					currentBeat = 0;
+			}, tempoSet($scope.bpm))
+		};
 
 		$scope.stopTimer = function(){
-
-			var nonCurrentBeats = beatOptions.filter(function(e) {
-				return e != currentBeat;
-			});
-
-			var x = document.getElementsByClassName(beatCols[currentBeat]);
-			var y = document.getElementsByClassName(beatCols[nonCurrentBeats[0]]);
-			var w = document.getElementsByClassName(beatCols[nonCurrentBeats[1]]);
-			var z = document.getElementsByClassName(beatCols[nonCurrentBeats[2]]);
-			var a = document.getElementsByClassName(beatCols[nonCurrentBeats[3]]);
-			var b = document.getElementsByClassName(beatCols[nonCurrentBeats[4]]);
-			var c = document.getElementsByClassName(beatCols[nonCurrentBeats[5]]);
-			var d = document.getElementsByClassName(beatCols[nonCurrentBeats[6]]);
-
-			x[0].style.backgroundColor = "#00FF80";
-			y[0].style.backgroundColor = "#00FF80";
-			w[0].style.backgroundColor = "#00FF80";
-			z[0].style.backgroundColor = "#00FF80";
-			a[0].style.backgroundColor = "#00FF80";
-			b[0].style.backgroundColor = "#00FF80";
-			c[0].style.backgroundColor = "#00FF80";
-			d[0].style.backgroundColor = "#00FF80";
-
 			currentBeat = 0;
-
 			clearInterval(refreshInterval);
 		};
 

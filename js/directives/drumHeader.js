@@ -5,7 +5,8 @@
 	.directive('drumHeader', function () {
 		return {
 			templateUrl: './templates/drum-header.html',
-			controller: 'mainCtrl'
+			controller: 'MainController',
+			controllerAs: 'mainCtrl'
 		};
 	});
 })();
