@@ -6,7 +6,10 @@
 		return {
 			templateUrl: './templates/drum-machine.html',
 			controller: 'MainController',
-			controllerAs: 'mainCtrl'
+			controllerAs: 'mainCtrl',
+			link: function (scope, ele, attrs) {
+				
+			}
 		};
 	});
 })();

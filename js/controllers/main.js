@@ -109,15 +109,7 @@
 			for(var i = 0; i < samples.length; i++)
 				samples[i].on = false;
 		};
-
-		$scope.addBpm = function() {
-			$scope.bpm++;
-		};
-
-		$scope.subtractBpm = function() {
-			$scope.bpm--;
-		};
-
+		
 		var tempoSet = function(bpm) {
 			return 60000 / (2 * bpm)
 		}
