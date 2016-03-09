@@ -23,9 +23,9 @@
 
 				scope.samples = [];
 
-				kick.src  = "./assets/sounds/kick.mp3";
-				snare.src = "./assets/sounds/snare.mp3";
-				hihat.src = "./assets/sounds/hihat.mp3";
+				kick.src  = "./components/sounds/kick.mp3";
+				snare.src = "./components/sounds/snare.mp3";
+				hihat.src = "./components/sounds/hihat.mp3";
 
 				scope.loopingStatus = function() {
 					return scope.startLoop;

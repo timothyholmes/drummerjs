@@ -1,0 +1,23 @@
+{
+  "name": "drummerjs",
+  "version": "1.0.0",
+  "description": "Web Based Drum Machine",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timothyholmes/drummerjs.git"
+  },
+  "author": "Tim Holmes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timothyholmes/drummerjs/issues"
+  },
+  "homepage": "https://github.com/timothyholmes/drummerjs",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
+  }
+}
