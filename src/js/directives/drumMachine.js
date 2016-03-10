@@ -4,7 +4,7 @@
 
 	.directive('drumMachine', function () {
 		return {
-			templateUrl: './templates/drum-machine.html',
+			templateUrl: '../templates/drum-machine.html',
 			controller: 'MainController',
 			controllerAs: 'mainCtrl',
 			link: function (scope, ele, attrs) {
@@ -23,9 +23,9 @@
 
 				scope.samples = [];
 
-				kick.src  = "./components/sounds/kick.mp3";
-				snare.src = "./components/sounds/snare.mp3";
-				hihat.src = "./components/sounds/hihat.mp3";
+				kick.src  = "../components/sounds/kick.mp3";
+				snare.src = "../components/sounds/snare.mp3";
+				hihat.src = "../components/sounds/hihat.mp3";
 
 				scope.loopingStatus = function() {
 					return scope.startLoop;

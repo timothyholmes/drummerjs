@@ -4,7 +4,7 @@
 
 	.directive('drumHeader', function () {
 		return {
-			templateUrl: './templates/drum-header.html',
+			templateUrl: '../templates/drum-header.html',
 			controller: 'MainController',
 			controllerAs: 'mainCtrl'
 		};

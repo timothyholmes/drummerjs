@@ -1,3 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700);
+
+html body {
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+	font-weight: 900;
+}
+
+h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+
 .box {
     border-radius: 15px;
 	background-color: #9DC0CC;

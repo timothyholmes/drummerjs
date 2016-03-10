@@ -32,7 +32,8 @@ gulp.task('clean:dist', function() {
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 
-    ['sass', 'useref'],
+    'sass', 
+    'useref',
     callback
   )
 })
