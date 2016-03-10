@@ -21,7 +21,7 @@ gulp.task('watch', function(){
 gulp.task('useref', function(){
   return gulp.src('src/index.html')
     .pipe(useref())
-    //.pipe(gulpIf('*.js', uglify()))
+    .pipe(gulpIf('*.js', uglify({mangle: false})))
     .pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('dist'))
 });
