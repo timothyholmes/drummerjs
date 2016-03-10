@@ -10,12 +10,12 @@ h2, h3, h4, h5, h6 {
 
 .box {
   border-radius: 15px;
-  background-color: #9DC0CC;
+  background-color: #80B1C2;
   height: 125px;
   width: 125px;
   display: inline-block; }
   .box:hover {
-    background-color: #4089A1; }
+    background-color: #478195; }
 
 .beatMarker {
   border-radius: 15px;
@@ -27,7 +27,7 @@ h2, h3, h4, h5, h6 {
   display: inline-block; }
 
 .boxsoundon {
-  background-color: #96DBF2; }
+  background-color: #98def7; }
 
 #grid {
   min-width: 1200px; }

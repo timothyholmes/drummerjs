@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700);
 
+$box-color: #80B1C2;
+
 html body {
 	font-family: 'Roboto', sans-serif;
 }
@@ -14,12 +16,12 @@ h2, h3, h4, h5, h6 {
 
 .box {
     border-radius: 15px;
-	background-color: #9DC0CC;
+	background-color: $box-color;
 	height: 125px;
 	width:125px;
 	display: inline-block;
 	&:hover {
-		background-color: #4089A1;
+		background-color: darken($box-color, 20%);
 	}
 }
 
@@ -34,7 +36,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .boxsoundon {
-	background-color: #96DBF2;
+	background-color: lighten(saturate( $box-color, 50% ), 15%);
 }
 
 #grid {
