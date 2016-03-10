@@ -13,9 +13,13 @@ h2, h3, h4, h5, h6 {
   background-color: #80B1C2;
   height: 125px;
   width: 125px;
-  display: inline-block; }
+  display: inline-block;
+  box-shadow: 1px 1px 1px 1px #888888;
+  margin-right: 2px; }
   .box:hover {
     background-color: #478195; }
+  .box:active {
+    box-shadow: none; }
 
 .beatMarker {
   border-radius: 15px;
@@ -24,7 +28,8 @@ h2, h3, h4, h5, h6 {
   width: 25px;
   margin-left: 50px;
   margin-right: 50px;
-  display: inline-block; }
+  display: inline-block;
+  box-shadow: 1px 1px 1px 1px #888888; }
 
 .boxsoundon {
   background-color: #98def7; }

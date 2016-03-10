@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700);
 
 $box-color: #80B1C2;
+$shadow: 1px 1px 1px 1px #888888;
 
 html body {
 	font-family: 'Roboto', sans-serif;
@@ -20,8 +21,13 @@ h2, h3, h4, h5, h6 {
 	height: 125px;
 	width:125px;
 	display: inline-block;
+	box-shadow: $shadow;
+	margin-right:2px;
 	&:hover {
 		background-color: darken($box-color, 20%);
+	}
+	&:active {
+		box-shadow: none;
 	}
 }
 
@@ -33,6 +39,7 @@ h2, h3, h4, h5, h6 {
 	margin-left: 50px;
 	margin-right: 50px;
 	display: inline-block;
+	box-shadow: $shadow;
 }
 
 .boxsoundon {
