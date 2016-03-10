@@ -6,7 +6,7 @@ Web based drum machine.
 
 ## Building
 
-To compile sass, minify css, and minify JS.
+To compile sass, minify css, and minify JS into a 'dist' folder:
 
 ```shell
 gulp build
