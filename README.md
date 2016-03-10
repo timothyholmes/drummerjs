@@ -2,7 +2,7 @@
 
 Web based drum machine.
 
-[Live version here.](http://www.cs.odu.edu/~tholmes/drummerjs/)
+[Live version here.](http://www.cs.odu.edu/~tholmes/drummerjs/dist/)
 
 ## Building
 
