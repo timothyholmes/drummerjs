@@ -5,7 +5,7 @@
 	angular.module('drummerJS')
 
 	.controller('MainController', function($scope, dataManager){
-		dataManager.getData('../components/config/samples.json', function(response) {
+		dataManager.getData('./components/samples.json', function(response) {
 			$scope.samples = response.data;
 
 			$scope.kicks = $scope.samples.filter(function(e) {
