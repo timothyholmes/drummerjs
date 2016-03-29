@@ -60,3 +60,9 @@ gulp watch
 + The tempo markers flash on the down and up beats.
 + Adjust the tempo with the tempo controls while the loop is paused.
 + Use 'Clear' clear the selections.
+
+## Reference
+
+This article wonderfully laid out the magic of the web audio api!
+
+[Web Audio Tutorial](https://dev.opera.com/articles/drum-sounds-webaudio/)
