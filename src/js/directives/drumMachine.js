@@ -7,6 +7,7 @@
 		var link = function (scope, ele, attrs) {
 			var _this = this;
 			var context = new AudioContext;
+			var now = context.currentTime;
 
 			function Kick(context) {
 				var _this = this;
@@ -102,12 +103,30 @@
 				_this.noise.stop(time + 0.2);
 			};
 
-			var kick = new Kick(context);
-			var now = context.currentTime;
-			kick.trigger(now);
+			function HiHat(context, buffer) {
+				var _this = this;
 
+				_this.context = context;
+				_this.buffer = buffer;
+			};
+
+			HiHat.prototype.setup = function() {
+				var _this = this;
+
+				_this.source = _this.context.createBufferSource();
+				_this.source.buffer = _this.buffer;
+				_this.source.connect(_this.context.destination);
+			};
+
+			HiHat.prototype.trigger = function(time) {
+				var _this = _this;
+
+				_this.setup();
+				_this.source.start(time);
+			};
+
+			var kick = new Kick(context);
 			var snare = new Snare(context);
-			snare.trigger(now + 1);
 
 			var refreshInterval;
 			var currentBeat = 0;
@@ -124,19 +143,20 @@
 			//kick.src  = "./components/kick.mp3";			
 			//var snare = new Audio();
 			//snare.src = "./components/snare.mp3";
-			//var hihat = new Audio();
-			//hihat.src = "./components/hihat.mp3";
+			var hihat = new Audio();
+			hihat.src = "./components/hihat.mp3";
 
 			scope.loopingStatus = function() {
 				return scope.startLoop;
 			}
 
 			scope.playSound = function(sound) {
+				var now = context.currentTime;
 				if(sound.on == true) {
 					if(sound.type == 'kick')
-						kick.play();
+						kick.trigger(now);
 					if(sound.type == 'snare')
-						snare.play();
+						snare.trigger(now);
 					if(sound.type == 'hihat')
 						hihat.play();
 				}

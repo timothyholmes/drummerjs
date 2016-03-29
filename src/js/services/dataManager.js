@@ -10,6 +10,10 @@
 			$http.get(path)
 			.then(callback)
 		};
+
+		this.getHiHat = function(context, callback) {
+			$http.get('./components/hihat.mp3')
+			.then(callback)
+		};
 	});
-	
 })();
