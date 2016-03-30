@@ -103,30 +103,72 @@
 				_this.noise.stop(time + 0.2);
 			};
 
-			function HiHat(context, buffer) {
+			function HiHat(context) {
 				var _this = this;
 
 				_this.context = context;
-				_this.buffer = buffer;
+			};
+
+			HiHat.prototype.noiseBuffer = function() {
+				var _this = this;
+
+				var bufferSize = _this.context.sampleRate;
+				var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
+				var output = buffer.getChannelData(0);
+
+				for (var i = 0; i < bufferSize; i++) {
+					output[i] = Math.random() * 2 - 1;
+				}
+
+				return buffer;
 			};
 
 			HiHat.prototype.setup = function() {
 				var _this = this;
 
-				_this.source = _this.context.createBufferSource();
-				_this.source.buffer = _this.buffer;
-				_this.source.connect(_this.context.destination);
+				_this.noise = _this.context.createBufferSource();
+				_this.noise.buffer = _this.noiseBuffer();
+
+				var noiseFilter = _this.context.createBiquadFilter();
+
+				noiseFilter.type = 'highpass';
+				noiseFilter.frequency.value = 1000;
+				_this.noise.connect(noiseFilter);
+
+				_this.noiseEnvelope = _this.context.createGain();
+				noiseFilter.connect(_this.noiseEnvelope);
+
+				_this.noiseEnvelope.connect(_this.context.destination);
+
+				_this.osc = _this.context.createOscillator();
+				_this.osc.type = 'triangle';
+
+				_this.oscEnvelope = _this.context.createGain();
+				_this.osc.connect(_this.oscEnvelope);
+				_this.oscEnvelope.connect(_this.context.destination);
 			};
 
 			HiHat.prototype.trigger = function(time) {
-				var _this = _this;
+				var _this = this;
 
 				_this.setup();
-				_this.source.start(time);
+
+				_this.noiseEnvelope.gain.setValueAtTime(1, time);
+				_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
+				_this.noise.start(time)
+
+				_this.osc.frequency.setValueAtTime(100, time);
+				_this.oscEnvelope.gain.setValueAtTime(0.7, time);
+				_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
+				_this.osc.start(time)
+
+				_this.osc.stop(time + 0.2);
+				_this.noise.stop(time + 0.2);
 			};
 
 			var kick = new Kick(context);
 			var snare = new Snare(context);
+			var hihat = new HiHat(context);
 
 			var refreshInterval;
 			var currentBeat = 0;
@@ -138,13 +180,6 @@
 			scope.paued = false;
 
 			scope.samples = [];
-
-			//var kick  = new Audio();			
-			//kick.src  = "./components/kick.mp3";			
-			//var snare = new Audio();
-			//snare.src = "./components/snare.mp3";
-			var hihat = new Audio();
-			hihat.src = "./components/hihat.mp3";
 
 			scope.loopingStatus = function() {
 				return scope.startLoop;
@@ -158,7 +193,7 @@
 					if(sound.type == 'snare')
 						snare.trigger(now);
 					if(sound.type == 'hihat')
-						hihat.play();
+						hihat.trigger(now);
 				}
 			};
 
