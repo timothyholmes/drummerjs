@@ -117,7 +117,7 @@
 				var output = buffer.getChannelData(0);
 
 				for (var i = 0; i < bufferSize; i++) {
-					output[i] = Math.random() * 2 - 1;
+					output[i] = Math.random() * 7 - 1;
 				}
 
 				return buffer;
@@ -132,7 +132,7 @@
 				var noiseFilter = _this.context.createBiquadFilter();
 
 				noiseFilter.type = 'highpass';
-				noiseFilter.frequency.value = 1000;
+				noiseFilter.frequency.value = 15000;
 				_this.noise.connect(noiseFilter);
 
 				_this.noiseEnvelope = _this.context.createGain();
@@ -141,7 +141,7 @@
 				_this.noiseEnvelope.connect(_this.context.destination);
 
 				_this.osc = _this.context.createOscillator();
-				_this.osc.type = 'triangle';
+				_this.osc.type = 'sine';
 
 				_this.oscEnvelope = _this.context.createGain();
 				_this.osc.connect(_this.oscEnvelope);
