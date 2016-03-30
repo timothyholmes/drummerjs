@@ -9,12 +9,13 @@
 	</div>
 	<div class=row>
 		<h3>BPM:</h3>
-		<button type=button class="btn btn-danger" data-ng-click="bpm = bpm - 1" data-ng-disabled="startLoop || bpm == 80"><span class="glyphicon glyphicon-minus"></span></button>
+		<button type=button class="btn btn-danger" data-ng-click="bpm = bpm - 1" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-minus"></span></button>
 		<span data-ng-hide="startLoop">
-        	<label>{{ bpm }}</label>
+        	<label data-ng-click="editing = !editing" data-ng-hide="editing">{{ bpm }}</label>
+          	<input data-ng-change="todo.edited = true" data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text" data-ng-disabled="startLoop"/>
         </span>
         <span class="noedit" data-ng-hide="!startLoop">{{ bpm }}</span>
-		<button type=button class="btn btn-success" data-ng-click="bpm = bpm + 1" data-ng-disabled="startLoop || bpm == 140"><span class="glyphicon glyphicon-plus"></span></button>
+		<button type=button class="btn btn-success" data-ng-click="bpm = bpm + 1" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-plus"></span></button>
 	</div>
 </header>
 <hr>
