@@ -12,6 +12,7 @@
 
 		_this.grinding = {
 			name: 'grinding',
+			tempo: 100,
 			kicks: ['col0', 'col6', 'col7', 'col9', 'col10', 'col13', 'col15'],
 			snares: ['col4', 'col12'],
 			hihats: ['col4', 'col12'],
@@ -130,8 +131,7 @@
 		}
 
 		_this.setSampleLoop = function(sampleLoop) {
-			if(sampleLoop.name == 'grinding')
-				_this.bpm = 100;
+			_this.bpm = sampleLoop.tempo;
 
 			for(var i = 0; i < _this.sampler.length; i++) {
 				if(_this.sampler[i].type == 'kick') 
