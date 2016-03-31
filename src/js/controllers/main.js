@@ -9,7 +9,7 @@
 		var context = new AudioContext;
 
 		_this.loopOne = {
-			kicks: ['col0', 'col6', 'col8'],
+			kicks: ['col0', 'col6', 'col9'],
 			snares: ['col4', 'col12'],
 			hihats: ['col0','col2','col4','col8','col11','col13'],
 			openhats: ['col14'],
