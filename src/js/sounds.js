@@ -213,17 +213,17 @@ OpenHat.prototype.trigger = function(time) {
 
 	_this.setup();
 
-	_this.noiseEnvelope.gain.setValueAtTime(0.5, time);
-	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.6);
+	_this.noiseEnvelope.gain.setValueAtTime(1, time);
+	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
 	_this.noise.start(time)
 
 	_this.osc.frequency.setValueAtTime(0, time);
-	_this.oscEnvelope.gain.setValueAtTime(0.1, time);
+	_this.oscEnvelope.gain.setValueAtTime(0.01, time);
 	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.4);
 	_this.osc.start(time)
 
-	_this.osc.stop(time + .7);
-	_this.noise.stop(time + .7);
+	_this.noise.stop(time + 0.5);
+	_this.osc.stop(time + 0.4);
 };
 
 /* LowTom */
