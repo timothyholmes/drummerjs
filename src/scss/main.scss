@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700);
 
 $box-color: #80B1C2;
+$box-size: 62.5px;
 $shadow: 1px 1px 1px 1px #888888;
 
 html body {
@@ -18,8 +19,8 @@ h2, h3, h4, h5, h6 {
 .box {
     border-radius: 7px;
 	background-color: $box-color;
-	height: 62.5px;
-	width:62.5px;
+	height: $box-size;
+	width: $box-size;
 	display: inline-block;
 	box-shadow: $shadow;
 	margin-right:3px;
@@ -33,18 +34,18 @@ h2, h3, h4, h5, h6 {
 
 .beatMarker {
 	border-radius: 15px;
-	background-color: #00FF80;
+	background-color: #F5C009;
 	height: 12px;
-	width: 12px;
-	margin-left: 25px;
-	margin-right: 30px;
+	width: 21.83px;
+	margin-left: 21.83px;
+	margin-right: 21.83px;
 	display: inline-block;
 	box-shadow: $shadow;
 }
 
 .activeBeatMarker {
 	border-radius: 15px;
-	background-color: #FF0048;
+	background-color: #FF3C00;
 	height: 25px;
 	width: 25px;
 	margin-left: 50px;

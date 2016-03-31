@@ -78,10 +78,10 @@
 				var x = document.getElementsByClassName('beatMarker');
 
 				for(var i = 0; i < x.length; i++) {
-					x[i].style.backgroundColor = "#00FF80";
+					x[i].style.backgroundColor = '#F5C009';
 				}
 
-				document.getElementsByClassName('col' + currentBeat)[0].style.backgroundColor = "#FF0048";
+				document.getElementsByClassName('col' + currentBeat)[0].style.backgroundColor = "#FF3C00";
 
 				var soundsToPlay = _this.sampler.filter(function(e) {
 					return e.class == 'col' + currentBeat;
