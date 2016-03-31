@@ -152,7 +152,7 @@ HiHat.prototype.trigger = function(time) {
 	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
 	_this.noise.start(time)
 
-	_this.osc.frequency.setValueAtTime(500, time);
+	_this.osc.frequency.setValueAtTime(0, time);
 	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
 	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
 	_this.osc.start(time)
@@ -213,12 +213,78 @@ OpenHat.prototype.trigger = function(time) {
 
 	_this.setup();
 
-	_this.noiseEnvelope.gain.setValueAtTime(1, time);
-	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
+	_this.noiseEnvelope.gain.setValueAtTime(0.5, time);
+	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.6);
 	_this.noise.start(time)
 
-	_this.osc.frequency.setValueAtTime(500, time);
-	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
+	_this.osc.frequency.setValueAtTime(0, time);
+	_this.oscEnvelope.gain.setValueAtTime(0.1, time);
+	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.4);
+	_this.osc.start(time)
+
+	_this.osc.stop(time + .7);
+	_this.noise.stop(time + .7);
+};
+
+/* LowTom */
+
+function LowTom(context) {
+	var _this = this;
+
+	_this.context = context;
+};
+
+
+LowTom.prototype.noiseBuffer = function() {
+	var _this = this;
+
+	var bufferSize = _this.context.sampleRate;
+	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
+	var output = buffer.getChannelData(0);
+
+	for (var i = 0; i < bufferSize; i++) {
+		output[i] = Math.random() * 7 - 1;
+	}
+
+	return buffer;
+};
+
+LowTom.prototype.setup = function() {
+	var _this = this;
+
+	_this.noise = _this.context.createBufferSource();
+	_this.noise.buffer = _this.noiseBuffer();
+
+	var noiseFilter = _this.context.createBiquadFilter();
+
+	noiseFilter.type = 'highpass';
+	noiseFilter.frequency.value = 1000;
+	_this.noise.connect(noiseFilter);
+
+	_this.noiseEnvelope = _this.context.createGain();
+	noiseFilter.connect(_this.noiseEnvelope);
+
+	//_this.noiseEnvelope.connect(_this.context.destination);
+
+	_this.osc = _this.context.createOscillator();
+	_this.osc.type = 'sine';
+
+	_this.oscEnvelope = _this.context.createGain();
+	_this.osc.connect(_this.oscEnvelope);
+	_this.oscEnvelope.connect(_this.context.destination);
+};
+
+LowTom.prototype.trigger = function(time) {
+	var _this = this;
+
+	_this.setup();
+
+	_this.noiseEnvelope.gain.setValueAtTime(200, time);
+	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 1);
+	_this.noise.start(time)
+
+	_this.osc.frequency.setValueAtTime(100, time);
+	_this.oscEnvelope.gain.setValueAtTime(200, time);
 	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
 	_this.osc.start(time)
 
