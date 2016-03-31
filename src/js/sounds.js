@@ -21,7 +21,7 @@ Kick.prototype.trigger = function(time) {
 	_this.setup();
 
 	_this.osc.frequency.setValueAtTime(200, time);
-	_this.gain.gain.setValueAtTime(2, time);
+	_this.gain.gain.setValueAtTime(1.5, time);
 
 	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 0.5);
 	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
@@ -61,8 +61,8 @@ Snare.prototype.setup = function() {
 
 	var noiseFilter = _this.context.createBiquadFilter();
 
-	noiseFilter.type = 'highpass';
-	noiseFilter.frequency.value = 1000;
+	noiseFilter.type = 'peaking';
+	noiseFilter.frequency.value = 15000;
 	_this.noise.connect(noiseFilter);
 
 	_this.noiseEnvelope = _this.context.createGain();
@@ -201,7 +201,7 @@ OpenHat.prototype.setup = function() {
 	_this.noiseEnvelope.connect(_this.context.destination);
 
 	_this.osc = _this.context.createOscillator();
-	_this.osc.type = 'sine';
+	_this.osc.type = 'triangle';
 
 	_this.oscEnvelope = _this.context.createGain();
 	_this.osc.connect(_this.oscEnvelope);
@@ -214,14 +214,14 @@ OpenHat.prototype.trigger = function(time) {
 	_this.setup();
 
 	_this.noiseEnvelope.gain.setValueAtTime(1, time);
-	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
+	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
 	_this.noise.start(time)
 
 	_this.osc.frequency.setValueAtTime(500, time);
 	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
-	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
+	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
 	_this.osc.start(time)
 
-	_this.osc.stop(time + 0.2);
-	_this.noise.stop(time + 0.2);
+	_this.osc.stop(time + 1.2);
+	_this.noise.stop(time + 1.2);
 };

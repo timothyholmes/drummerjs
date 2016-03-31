@@ -65,5 +65,5 @@ gulp watch
 
 This article wonderfully laid out the magic of the web audio api!
 
-[Web Audio Tutorial](https://dev.opera.com/articles/drum-sounds-webaudio/)
-[Web Audio Docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
++ [Web Audio Tutorial](https://dev.opera.com/articles/drum-sounds-webaudio/)
++ [Web Audio Docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
