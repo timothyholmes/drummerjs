@@ -11,21 +11,24 @@
 		var drumKit = {
 			kick: new Kick(context),
 			snare: new Snare(context),
-			hihat: new HiHat(context)
+			hihat: new HiHat(context),
+			openhat: new OpenHat(context)
 		}
 
 		_this.sampler = [];
 
 		var initSampler = function() {
-			for(var i = 0; i < 4; i++) {
+			for(var i = 0; i < 5; i++) {
 				var type = '';
 
 				if(i < 2)
 					type = i == 0 ? 'marker' : 'kick';
-				else if(i >= 2)
+				else if(i >= 2 && i < 4)
 					type = i == 2 ? 'snare' : 'hihat';
+				else
+					type = 'openhat'
 
-				for(var j = 0; j <= 7; j++) {
+				for(var j = 0; j <= 15; j++) {
 					_this.sampler.push({
 						type: type,
 						on: false,
@@ -57,6 +60,8 @@
 					drumKit.snare.trigger(now);
 				if(sound.type == 'hihat')
 					drumKit.hihat.trigger(now);
+				if(sound.type == 'openhat')
+					drumKit.openhat.trigger(now);
 			}
 		};
 
@@ -88,7 +93,7 @@
 				}
 
 				currentBeat++;
-				if(currentBeat >= 8) 
+				if(currentBeat >= 16) 
 					currentBeat = 0;
 			}, tempoSet(_this.bpm))
 		};
@@ -111,7 +116,7 @@
 		};
 
 		var tempoSet = function(bpm) {
-			return 60000 / (2 * bpm)
+			return 60000 / (4 * bpm)
 		}
 	});
 })();

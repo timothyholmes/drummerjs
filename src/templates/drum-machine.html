@@ -11,4 +11,7 @@
 	<div>	
 		<span data-ng-repeat="hihat in mainCtrl.sampler | filter: {type:'hihat'}" class="box" data-ng-init="hihat.on = false" data-ng-class="{'boxsoundon': hihat.on}" data-ng-click="hihat.on = !hihat.on; mainCtrl.playSound(hihat)"></span>
 	</div>
+	<div>	
+		<span data-ng-repeat="openhat in mainCtrl.sampler | filter: {type:'openhat'}" class="box" data-ng-init="openhat.on = false" data-ng-class="{'boxsoundon': openhat.on}" data-ng-click="openhat.on = !openhat.on; mainCtrl.playSound(openhat)"></span>
+	</div>
 </div>
