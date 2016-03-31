@@ -3,10 +3,14 @@
 	angular.module('drummerJS')
 
 	.directive('drumHeader', function () {
-		return {
+		
+		var directiveDefinitionObject = {
 			templateUrl: './templates/drum-header.html',
 			controller: 'MainController',
 			controllerAs: 'mainCtrl'
 		};
+
+		return directiveDefinitionObject;
+		
 	});
 })();

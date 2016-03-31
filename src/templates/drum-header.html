@@ -1,21 +1,21 @@
 <header class=container>
 	<div class=row>
 		<h1>drummerjs</h1>
-		<button type=button class="btn btn-success" data-ng-click="startTimer(); startLoop = !startLoop; paused = false" data-ng-hide="startLoop"><span class="glyphicon glyphicon-play"></span></button>
-		<button type=button class="btn btn-success" data-ng-click="pauseTimer(); paused = false;" data-ng-show="startLoop && paused == true"><span class="glyphicon glyphicon-play"></span></button>
-		<button type=button class="btn btn-warning" data-ng-click="pauseTimer(); paused = true;" data-ng-show="startLoop && paused == false"><span class="glyphicon glyphicon-pause"></span></button>
-		<button type=button class="btn btn-danger" data-ng-click="stopTimer(); startLoop = !startLoop" data-ng-disabled="!startLoop"><span class="glyphicon glyphicon-stop"></span></button>
-		<button type=button class="btn btn-info" data-ng-click="clearPads()"><span class="glyphicon glyphicon-trash"></span></button>
+		<button type=button class="btn btn-success" data-ng-click="mainCtrl.startTimer(); mainCtrl.startLoop = !mainCtrl.startLoop; mainCtrl.paused = false" data-ng-hide="mainCtrl.startLoop"><span class="glyphicon glyphicon-play"></span></button>
+		<button type=button class="btn btn-success" data-ng-click="mainCtrl.pauseTimer(); mainCtrl.paused = false;" data-ng-show="mainCtrl.startLoop && mainCtrl.paused == true"><span class="glyphicon glyphicon-play"></span></button>
+		<button type=button class="btn btn-warning" data-ng-click="mainCtrl.pauseTimer(); mainCtrl.paused = true;" data-ng-show="mainCtrl.startLoop && mainCtrl.paused == false"><span class="glyphicon glyphicon-pause"></span></button>
+		<button type=button class="btn btn-danger" data-ng-click="mainCtrl.stopTimer(); mainCtrl.startLoop = !mainCtrl.startLoop" data-ng-disabled="!mainCtrl.startLoop"><span class="glyphicon glyphicon-stop"></span></button>
+		<button type=button class="btn btn-info" data-ng-click="mainCtrl.clearPads()"><span class="glyphicon glyphicon-trash"></span></button>
 	</div>
 	<div class=row>
 		<h3>BPM:</h3>
-		<button type=button class="btn btn-danger" data-ng-click="bpm = bpm - 1" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-minus"></span></button>
-		<span data-ng-hide="startLoop">
+		<button type=button class="btn btn-danger" data-ng-click="mainCtrl.bpm = mainCtrl.bpm - 1" data-ng-disabled="mainCtrl.startLoop"><span class="glyphicon glyphicon-minus"></span></button>
+		<span data-ng-hide="mainCtrl.startLoop">
         	<label data-ng-click="editing = !editing" data-ng-hide="editing">{{ bpm }}</label>
-          	<input data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="bpm" class="editing-label" type="text" data-ng-disabled="startLoop"/>
+          	<input data-ng-blur="editing = false;" data-ng-show="editing" data-ng-model="mainCtrl.bpm" class="editing-label" type="text" data-ng-disabled="mainCtrl.startLoop"/>
         </span>
-        <span class="noedit" data-ng-hide="!startLoop">{{ bpm }}</span>
-		<button type=button class="btn btn-success" data-ng-click="bpm = bpm + 1" data-ng-disabled="startLoop"><span class="glyphicon glyphicon-plus"></span></button>
+        <span class="noedit" data-ng-hide="!mainCtrl.startLoop">{{ bpm }}</span>
+		<button type=button class="btn btn-success" data-ng-click="mainCtrl.bpm = mainCtrl.bpm + 1" data-ng-disabled="mainCtrl.startLoop"><span class="glyphicon glyphicon-plus"></span></button>
 	</div>
 </header>
 <hr>
