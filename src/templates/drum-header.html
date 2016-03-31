@@ -6,6 +6,7 @@
 		<button type=button class="btn btn-warning" data-ng-click="mainCtrl.pauseTimer(); mainCtrl.paused = true;" data-ng-show="mainCtrl.startLoop && mainCtrl.paused == false"><span class="glyphicon glyphicon-pause"></span></button>
 		<button type=button class="btn btn-danger" data-ng-click="mainCtrl.stopTimer(); mainCtrl.startLoop = !mainCtrl.startLoop" data-ng-disabled="!mainCtrl.startLoop"><span class="glyphicon glyphicon-stop"></span></button>
 		<button type=button class="btn btn-info" data-ng-click="mainCtrl.clearPads()"><span class="glyphicon glyphicon-trash"></span></button>
+		<button type=button class="btn btn-primary pull-right" data-ng-click="mainCtrl.setSampleLoop(mainCtrl.loopOne)">Set Sample Loop</button>
 	</div>
 	<div class=row>
 		<h3>BPM:</h3>
