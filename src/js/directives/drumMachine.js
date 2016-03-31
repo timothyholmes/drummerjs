@@ -9,9 +9,11 @@
 			var context = new AudioContext;
 			var now = context.currentTime;
 
-			var kick = new Kick(context);
-			var snare = new Snare(context);
-			var hihat = new HiHat(context);
+			var drumKit = {
+				kick: new Kick(context),
+				snare: new Snare(context),
+				hihat: new HiHat(context)
+			}
 
 			var refreshInterval;
 			var currentBeat = 0;
@@ -32,11 +34,11 @@
 				var now = context.currentTime;
 				if(sound.on == true) {
 					if(sound.type == 'kick')
-						kick.trigger(now);
+						drumKit.kick.trigger(now);
 					if(sound.type == 'snare')
-						snare.trigger(now);
+						drumKit.snare.trigger(now);
 					if(sound.type == 'hihat')
-						hihat.trigger(now);
+						drumKit.hihat.trigger(now);
 				}
 			};
 
