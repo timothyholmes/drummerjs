@@ -9,12 +9,12 @@
 		var context = new AudioContext;
 
 		_this.loopOne = {
-			kicks: ['col0', 'col8'],
+			kicks: ['col0', 'col6', 'col8'],
 			snares: ['col4', 'col12'],
-			hihats: ['col0','col2','col4','col6','col8','col10','col12'],
+			hihats: ['col0','col2','col4','col8','col11','col13'],
 			openhats: ['col14'],
-			lowtoms: [],
-			hitoms: []
+			lowtoms: ['col10'],
+			hitoms: ['col7']
 		}
 
 		var drumKit = {
