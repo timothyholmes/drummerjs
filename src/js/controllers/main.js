@@ -20,14 +20,10 @@
 			for(var i = 0; i < 4; i++) {
 				var type = '';
 
-				if(i ==0)
-					type = 'marker';
-				else if(i == 1)
-					type = 'kick';
-				else if(i == 2)
-					type = 'snare';
-				else if(i ==3)
-					type = 'hihat';
+				if(i < 2)
+					type = i == 0 ? 'marker' : 'kick';
+				else if(i >= 2)
+					type = i == 2 ? 'snare' : 'hihat';
 
 				for(var j = 0; j <= 7; j++) {
 					_this.sampler.push({
@@ -43,14 +39,11 @@
 
 		var refreshInterval;
 		var currentBeat = 0;
-		var beatOptions = [0, 1, 2, 3, 4, 5, 6, 7];
 		var beatCols = ['col0', 'col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7'];
 				
 		_this.bpm = 120;
 		_this.startLoop = false;
 		_this.paued = false;
-
-		_this.samples = [];
 
 		_this.loopingStatus = function() {
 			return _this.startLoop;
@@ -114,8 +107,8 @@
 		};
 
 		_this.clearPads = function() {
-			for(var i = 0; i < _this.samples.length; i++)
-				_this.samples[i].on = false;
+			for(var i = 0; i < _this.sampler.length; i++)
+				_this.sampler[i].on = false;
 		};
 
 		var tempoSet = function(bpm) {
