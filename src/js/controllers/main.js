@@ -39,7 +39,6 @@
 
 		var refreshInterval;
 		var currentBeat = 0;
-		var beatCols = ['col0', 'col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7'];
 				
 		_this.bpm = 120;
 		_this.startLoop = false;
@@ -78,10 +77,10 @@
 					x[i].style.backgroundColor = "#00FF80";
 				}
 
-				document.getElementsByClassName(beatCols[currentBeat])[0].style.backgroundColor = "#FF0048";
+				document.getElementsByClassName('col' + currentBeat)[0].style.backgroundColor = "#FF0048";
 
 				arrayToSend = _this.sampler.filter(function(e) {
-					return e.class == beatCols[currentBeat];
+					return e.class == 'col' + currentBeat;
 				});
 
 				for (var i = 0; i < arrayToSend.length; i++) {
