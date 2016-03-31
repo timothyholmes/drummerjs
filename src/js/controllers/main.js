@@ -61,14 +61,7 @@
 		_this.playSound = function(sound) {
 			var now = context.currentTime;
 			if(sound.on == true) {
-				if(sound.type == 'kick')
-					drumKit.kick.trigger(now);
-				if(sound.type == 'snare')
-					drumKit.snare.trigger(now);
-				if(sound.type == 'hihat')
-					drumKit.hihat.trigger(now);
-				if(sound.type == 'openhat')
-					drumKit.openhat.trigger(now);
+				drumKit[sound.type].trigger(now);
 			}
 		};
 
@@ -82,7 +75,6 @@
 
 			refreshInterval = setInterval(function(){
 
-				var arrayToSend = [];
 				var x = document.getElementsByClassName('beatMarker');
 
 				for(var i = 0; i < x.length; i++) {
@@ -91,12 +83,12 @@
 
 				document.getElementsByClassName('col' + currentBeat)[0].style.backgroundColor = "#FF0048";
 
-				arrayToSend = _this.sampler.filter(function(e) {
+				var soundsToPlay = _this.sampler.filter(function(e) {
 					return e.class == 'col' + currentBeat;
 				});
 
-				for (var i = 0; i < arrayToSend.length; i++) {
-					_this.playSound(arrayToSend[i]);
+				for (var i = 0; i < soundsToPlay.length; i++) {
+					_this.playSound(soundsToPlay[i]);
 				}
 
 				currentBeat++;
@@ -121,6 +113,8 @@
 			for(var i = 0; i < _this.sampler.length; i++)
 				_this.sampler[i].on = false;
 		};
+
+		/** http://stackoverflow.com/questions/7378228/check-if-an-element-is-present-in-an-array */
 
 		var arrayCheck = function(value, array) {
 		    return array.indexOf(value) > -1;
