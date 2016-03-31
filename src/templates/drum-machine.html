@@ -1,16 +1,14 @@
 <div id="grid">
-	<span data-ng-hide="!startLoop">
-		<span data-ng-repeat="marker in markers">
-			<span class="beatMarker" data-ng-class="getClass(marker)"></span>
-		</span>
-	</span><br>
-	<div>
-		<span data-ng-repeat="kick in kicks" class="box" data-ng-init="kick.on = false" data-ng-class="{'boxsoundon': kick.on}" data-ng-click="kick.on = !kick.on; playSound(kick)"></span>
+	<div data-ng-hide="!startLoop">
+		<span data-ng-repeat="marker in sampler | filter: {type:'marker'}" class="beatMarker" data-ng-class="getClass(marker)"></span>
 	</div>
 	<div>
-		<span data-ng-repeat="snare in snares" class="box" data-ng-init="snare.on = false" data-ng-class="{'boxsoundon': snare.on}" data-ng-click="snare.on = !snare.on; playSound(snare)"></span>
+		<span data-ng-repeat="kick in sampler | filter: {type:'kick'}" class="box" data-ng-init="kick.on = false" data-ng-class="{'boxsoundon': kick.on}" data-ng-click="kick.on = !kick.on; playSound(kick)"></span>
+	</div>
+	<div>
+		<span data-ng-repeat="snare in sampler | filter: {type:'snare'}" class="box" data-ng-init="snare.on = false" data-ng-class="{'boxsoundon': snare.on}" data-ng-click="snare.on = !snare.on; playSound(snare)"></span>
 	</div>
 	<div>	
-		<span data-ng-repeat="hihat in hihats" class="box" data-ng-init="hihat.on = false" data-ng-class="{'boxsoundon': hihat.on}" data-ng-click="hihat.on = !hihat.on; playSound(hihat)"></span>
+		<span data-ng-repeat="hihat in sampler | filter: {type:'hihat'}" class="box" data-ng-init="hihat.on = false" data-ng-class="{'boxsoundon': hihat.on}" data-ng-click="hihat.on = !hihat.on; playSound(hihat)"></span>
 	</div>
 </div>

@@ -7,7 +7,6 @@
 		var link = function (scope, ele, attrs) {
 			var _this = this;
 			var context = new AudioContext;
-			var now = context.currentTime;
 
 			var drumKit = {
 				kick: new Kick(context),
@@ -15,10 +14,37 @@
 				hihat: new HiHat(context)
 			}
 
+			scope.sampler = [];
+
+			var initSampler = function() {
+				for(var i = 0; i < 4; i++) {
+					var type = '';
+
+					if(i ==0)
+						type = 'marker';
+					else if(i == 1)
+						type = 'kick';
+					else if(i == 2)
+						type = 'snare';
+					else if(i ==3)
+						type = 'hihat';
+
+					for(var j = 0; j <= 7; j++) {
+						scope.sampler.push({
+							type: type,
+							on: false,
+							class: 'col' + j
+						})
+					}
+				}
+			}
+
+			initSampler();
+
 			var refreshInterval;
 			var currentBeat = 0;
 			var beatOptions = [0, 1, 2, 3, 4, 5, 6, 7];
-			var beatCols = ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7', 'col8'];
+			var beatCols = ['col0', 'col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7'];
 				
 			scope.bpm = 120;
 			scope.startLoop = false;
@@ -43,7 +69,7 @@
 			};
 
 			scope.getClass = function(ele) {
-				return ele.group;
+				return ele.class;
 			};
 
 			scope.startTimer = function() {
@@ -61,8 +87,8 @@
 
 					document.getElementsByClassName(beatCols[currentBeat])[0].style.backgroundColor = "#FF0048";
 
-					arrayToSend = scope.samples.filter(function(e) {
-						return e.group == beatCols[currentBeat];
+					arrayToSend = scope.sampler.filter(function(e) {
+						return e.class == beatCols[currentBeat];
 					});
 
 					for (var i = 0; i < arrayToSend.length; i++) {
