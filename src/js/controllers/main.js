@@ -13,7 +13,8 @@
 			snares: ['col4', 'col12'],
 			hihats: ['col0','col2','col4','col6','col8','col10','col12'],
 			openhats: ['col14'],
-			lowtoms: []
+			lowtoms: [],
+			hitoms: []
 		}
 
 		var drumKit = {
@@ -21,21 +22,24 @@
 			snare: new Snare(context),
 			hihat: new HiHat(context),
 			openhat: new OpenHat(context),
-			lowtom: new LowTom(context)
+			lowtom: new LowTom(context),
+			hitom: new HiTom(context)
 		}
 
 		_this.sampler = [];
 
 		var initSampler = function() {
-			for(var i = 0; i < 6; i++) {
+			for(var i = 0; i < 7; i++) {
 				var type = '';
 
 				if(i < 2)
 					type = i == 0 ? 'marker' : 'kick';
 				else if(i >= 2 && i < 4)
 					type = i == 2 ? 'snare' : 'hihat';
-				else
+				else if(i >= 4 && i < 6)
 					type = i == 4 ? 'openhat' : 'lowtom';
+				else
+					type = 'hitom';
 
 				for(var j = 0; j <= 15; j++) {
 					_this.sampler.push({
@@ -134,6 +138,8 @@
 					_this.sampler[i].on = arrayCheck(_this.sampler[i].class, sampleLoop.openhats) ? true : false;
 				else if(_this.sampler[i].type == 'lowtom') 
 					_this.sampler[i].on = arrayCheck(_this.sampler[i].class, sampleLoop.lowtoms) ? true : false;
+				else if(_this.sampler[i].type == 'hitom') 
+					_this.sampler[i].on = arrayCheck(_this.sampler[i].class, sampleLoop.hitoms) ? true : false;
 			}
 		}
 

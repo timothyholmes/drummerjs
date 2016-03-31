@@ -17,4 +17,7 @@
 	<div>	
 		<span data-ng-repeat="lowtom in mainCtrl.sampler | filter: {type:'lowtom'}" class="box" data-ng-init="lowtom.on = false" data-ng-class="{'boxsoundon': lowtom.on}" data-ng-click="lowtom.on = !lowtom.on; mainCtrl.playSound(lowtom)"></span>
 	</div>
+	<div>	
+		<span data-ng-repeat="hitom in mainCtrl.sampler | filter: {type:'hitom'}" class="box" data-ng-init="hitom.on = false" data-ng-class="{'boxsoundon': hitom.on}" data-ng-click="hitom.on = !hitom.on; mainCtrl.playSound(hitom)"></span>
+	</div>
 </div>
