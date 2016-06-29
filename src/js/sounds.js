@@ -1,294 +1,298 @@
-/* Kick */
+(function () {
+    'use strict';
 
-function Kick(context) {
-	var _this = this;
+    /* Kick */
 
-	_this.context = context;
-};
+    function Kick(context) {
+    	var _this = this;
 
-Kick.prototype.setup = function() {
-	var _this = this;
+    	_this.context = context;
+    }
 
-	_this.osc = _this.context.createOscillator();
-	_this.gain = _this.context.createGain();
-	_this.osc.connect(_this.gain);
-	_this.gain.connect(_this.context.destination)
-};
+    Kick.prototype.setup = function() {
+    	var _this = this;
 
-Kick.prototype.trigger = function(time) {
-	var _this = this;
+    	_this.osc = _this.context.createOscillator();
+    	_this.gain = _this.context.createGain();
+    	_this.osc.connect(_this.gain);
+    	_this.gain.connect(_this.context.destination);
+    };
 
-	_this.setup();
+    Kick.prototype.trigger = function(time) {
+    	var _this = this;
 
-	_this.osc.frequency.setValueAtTime(150, time);
-	_this.gain.gain.setValueAtTime(1.5, time);
+    	_this.setup();
 
-	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
-	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
+    	_this.osc.frequency.setValueAtTime(150, time);
+    	_this.gain.gain.setValueAtTime(1.5, time);
 
-	_this.osc.start(time);
+    	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
+    	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
 
-	_this.osc.stop(time + 1);
-};
+    	_this.osc.start(time);
 
-/* Snare */
+    	_this.osc.stop(time + 1);
+    };
 
-function Snare(context) {
-	var _this = this;
+    /* Snare */
 
-	_this.context = context;
-};
+    function Snare(context) {
+    	var _this = this;
 
-Snare.prototype.noiseBuffer = function() {
-	var _this = this;
+    	_this.context = context;
+    }
 
-	var bufferSize = _this.context.sampleRate;
-	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
-	var output = buffer.getChannelData(0);
+    Snare.prototype.noiseBuffer = function() {
+    	var _this = this;
 
-	for (var i = 0; i < bufferSize; i++) {
-		output[i] = Math.random() * 2 - 1;
-	}
+    	var bufferSize = _this.context.sampleRate;
+    	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
+    	var output = buffer.getChannelData(0);
 
-	return buffer;
-};
+    	for (var i = 0; i < bufferSize; i++) {
+    		output[i] = Math.random() * 2 - 1;
+    	}
 
-Snare.prototype.setup = function() {
-	var _this = this;
+    	return buffer;
+    };
 
-	_this.noise = _this.context.createBufferSource();
-	_this.noise.buffer = _this.noiseBuffer();
+    Snare.prototype.setup = function() {
+    	var _this = this;
 
-	var noiseFilter = _this.context.createBiquadFilter();
+    	_this.noise = _this.context.createBufferSource();
+    	_this.noise.buffer = _this.noiseBuffer();
 
-	noiseFilter.type = 'peaking';
-	noiseFilter.frequency.value = 15000;
-	_this.noise.connect(noiseFilter);
+    	var noiseFilter = _this.context.createBiquadFilter();
 
-	_this.noiseEnvelope = _this.context.createGain();
-	noiseFilter.connect(_this.noiseEnvelope);
+    	noiseFilter.type = 'peaking';
+    	noiseFilter.frequency.value = 15000;
+    	_this.noise.connect(noiseFilter);
 
-	_this.noiseEnvelope.connect(_this.context.destination);
+    	_this.noiseEnvelope = _this.context.createGain();
+    	noiseFilter.connect(_this.noiseEnvelope);
 
-	_this.osc = _this.context.createOscillator();
-	_this.osc.type = 'triangle';
+    	_this.noiseEnvelope.connect(_this.context.destination);
 
-	_this.oscEnvelope = _this.context.createGain();
-	_this.osc.connect(_this.oscEnvelope);
-	_this.oscEnvelope.connect(_this.context.destination);
-};
+    	_this.osc = _this.context.createOscillator();
+    	_this.osc.type = 'triangle';
 
-Snare.prototype.trigger = function(time) {
-	var _this = this;
+    	_this.oscEnvelope = _this.context.createGain();
+    	_this.osc.connect(_this.oscEnvelope);
+    	_this.oscEnvelope.connect(_this.context.destination);
+    };
 
-	_this.setup();
+    Snare.prototype.trigger = function(time) {
+    	var _this = this;
 
-	_this.noiseEnvelope.gain.setValueAtTime(1, time);
-	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
-	_this.noise.start(time)
+    	_this.setup();
 
-	_this.osc.frequency.setValueAtTime(100, time);
-	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
-	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
-	_this.osc.start(time)
+    	_this.noiseEnvelope.gain.setValueAtTime(1, time);
+    	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
+    	_this.noise.start(time);
 
-	_this.osc.stop(time + 0.2);
-	_this.noise.stop(time + 0.2);
-};
+    	_this.osc.frequency.setValueAtTime(100, time);
+    	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
+    	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
+    	_this.osc.start(time);
 
-/* Closed HiHat */
+    	_this.osc.stop(time + 0.2);
+    	_this.noise.stop(time + 0.2);
+    };
 
-function HiHat(context) {
-	var _this = this;
+    /* Closed HiHat */
 
-	_this.context = context;
-};
+    function HiHat(context) {
+    	var _this = this;
 
-HiHat.prototype.noiseBuffer = function() {
-	var _this = this;
+    	_this.context = context;
+    }
 
-	var bufferSize = _this.context.sampleRate;
-	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
-	var output = buffer.getChannelData(0);
+    HiHat.prototype.noiseBuffer = function() {
+    	var _this = this;
 
-	for (var i = 0; i < bufferSize; i++) {
-		output[i] = Math.random() * 7 - 1;
-	}
+    	var bufferSize = _this.context.sampleRate;
+    	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
+    	var output = buffer.getChannelData(0);
 
-	return buffer;
-};
+    	for (var i = 0; i < bufferSize; i++) {
+    		output[i] = Math.random() * 7 - 1;
+    	}
 
-HiHat.prototype.setup = function() {
-	var _this = this;
+    	return buffer;
+    };
 
-	_this.noise = _this.context.createBufferSource();
-	_this.noise.buffer = _this.noiseBuffer();
+    HiHat.prototype.setup = function() {
+    	var _this = this;
 
-	var noiseFilter = _this.context.createBiquadFilter();
+    	_this.noise = _this.context.createBufferSource();
+    	_this.noise.buffer = _this.noiseBuffer();
 
-	noiseFilter.type = 'highpass';
-	noiseFilter.frequency.value = 15000;
-	_this.noise.connect(noiseFilter);
+    	var noiseFilter = _this.context.createBiquadFilter();
 
-	_this.noiseEnvelope = _this.context.createGain();
-	noiseFilter.connect(_this.noiseEnvelope);
+    	noiseFilter.type = 'highpass';
+    	noiseFilter.frequency.value = 15000;
+    	_this.noise.connect(noiseFilter);
 
-	_this.noiseEnvelope.connect(_this.context.destination);
+    	_this.noiseEnvelope = _this.context.createGain();
+    	noiseFilter.connect(_this.noiseEnvelope);
 
-	_this.osc = _this.context.createOscillator();
-	_this.osc.type = 'sine';
+    	_this.noiseEnvelope.connect(_this.context.destination);
 
-	_this.oscEnvelope = _this.context.createGain();
-	_this.osc.connect(_this.oscEnvelope);
-	_this.oscEnvelope.connect(_this.context.destination);
-};
+    	_this.osc = _this.context.createOscillator();
+    	_this.osc.type = 'sine';
 
-HiHat.prototype.trigger = function(time) {
-	var _this = this;
+    	_this.oscEnvelope = _this.context.createGain();
+    	_this.osc.connect(_this.oscEnvelope);
+    	_this.oscEnvelope.connect(_this.context.destination);
+    };
 
-	_this.setup();
+    HiHat.prototype.trigger = function(time) {
+    	var _this = this;
 
-	_this.noiseEnvelope.gain.setValueAtTime(1, time);
-	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
-	_this.noise.start(time)
+    	_this.setup();
 
-	_this.osc.frequency.setValueAtTime(0, time);
-	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
-	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
-	_this.osc.start(time)
+    	_this.noiseEnvelope.gain.setValueAtTime(1, time);
+    	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
+    	_this.noise.start(time);
 
-	_this.osc.stop(time + 0.2);
-	_this.noise.stop(time + 0.2);
-};
+    	_this.osc.frequency.setValueAtTime(0, time);
+    	_this.oscEnvelope.gain.setValueAtTime(0.7, time);
+    	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
+    	_this.osc.start(time);
 
-/* Open HiHat */
+    	_this.osc.stop(time + 0.2);
+    	_this.noise.stop(time + 0.2);
+    };
 
-function OpenHat(context) {
-	var _this = this;
+    /* Open HiHat */
 
-	_this.context = context;
-};
+    function OpenHat(context) {
+    	var _this = this;
 
-OpenHat.prototype.noiseBuffer = function() {
-	var _this = this;
+    	_this.context = context;
+    }
 
-	var bufferSize = _this.context.sampleRate;
-	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
-	var output = buffer.getChannelData(0);
+    OpenHat.prototype.noiseBuffer = function() {
+    	var _this = this;
 
-	for (var i = 0; i < bufferSize; i++) {
-		output[i] = Math.random() * 7 - 1;
-	}
+    	var bufferSize = _this.context.sampleRate;
+    	var buffer = _this.context.createBuffer(1, bufferSize, _this.context.sampleRate);
+    	var output = buffer.getChannelData(0);
 
-	return buffer;
-};
+    	for (var i = 0; i < bufferSize; i++) {
+    		output[i] = Math.random() * 7 - 1;
+    	}
 
-OpenHat.prototype.setup = function() {
-	var _this = this;
+    	return buffer;
+    };
 
-	_this.noise = _this.context.createBufferSource();
-	_this.noise.buffer = _this.noiseBuffer();
+    OpenHat.prototype.setup = function() {
+    	var _this = this;
 
-	var noiseFilter = _this.context.createBiquadFilter();
+    	_this.noise = _this.context.createBufferSource();
+    	_this.noise.buffer = _this.noiseBuffer();
 
-	noiseFilter.type = 'highpass';
-	noiseFilter.frequency.value = 15000;
-	_this.noise.connect(noiseFilter);
+    	var noiseFilter = _this.context.createBiquadFilter();
 
-	_this.noiseEnvelope = _this.context.createGain();
-	noiseFilter.connect(_this.noiseEnvelope);
+    	noiseFilter.type = 'highpass';
+    	noiseFilter.frequency.value = 15000;
+    	_this.noise.connect(noiseFilter);
 
-	_this.noiseEnvelope.connect(_this.context.destination);
+    	_this.noiseEnvelope = _this.context.createGain();
+    	noiseFilter.connect(_this.noiseEnvelope);
 
-	_this.osc = _this.context.createOscillator();
-	_this.osc.type = 'triangle';
+    	_this.noiseEnvelope.connect(_this.context.destination);
 
-	_this.oscEnvelope = _this.context.createGain();
-	_this.osc.connect(_this.oscEnvelope);
-	_this.oscEnvelope.connect(_this.context.destination);
-};
+    	_this.osc = _this.context.createOscillator();
+    	_this.osc.type = 'triangle';
 
-OpenHat.prototype.trigger = function(time) {
-	var _this = this;
+    	_this.oscEnvelope = _this.context.createGain();
+    	_this.osc.connect(_this.oscEnvelope);
+    	_this.oscEnvelope.connect(_this.context.destination);
+    };
 
-	_this.setup();
+    OpenHat.prototype.trigger = function(time) {
+    	var _this = this;
 
-	_this.noiseEnvelope.gain.setValueAtTime(1, time);
-	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
-	_this.noise.start(time)
+    	_this.setup();
 
-	_this.osc.frequency.setValueAtTime(0, time);
-	_this.oscEnvelope.gain.setValueAtTime(0.01, time);
-	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.4);
-	_this.osc.start(time)
+    	_this.noiseEnvelope.gain.setValueAtTime(1, time);
+    	_this.noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
+    	_this.noise.start(time);
 
-	_this.noise.stop(time + 0.5);
-	_this.osc.stop(time + 0.4);
-};
+    	_this.osc.frequency.setValueAtTime(0, time);
+    	_this.oscEnvelope.gain.setValueAtTime(0.01, time);
+    	_this.oscEnvelope.gain.exponentialRampToValueAtTime(0.01, time + 0.4);
+    	_this.osc.start(time);
 
-/* LowTom */
+    	_this.noise.stop(time + 0.5);
+    	_this.osc.stop(time + 0.4);
+    };
 
-function LowTom(context) {
-	var _this = this;
+    /* LowTom */
 
-	_this.context = context;
-};
+    function LowTom(context) {
+    	var _this = this;
 
-LowTom.prototype.setup = function() {
-	var _this = this;
+    	_this.context = context;
+    }
 
-	_this.osc = _this.context.createOscillator();
-	_this.gain = _this.context.createGain();
-	_this.osc.connect(_this.gain);
-	_this.gain.connect(_this.context.destination)
-};
+    LowTom.prototype.setup = function() {
+    	var _this = this;
 
-LowTom.prototype.trigger = function(time) {
-	var _this = this;
+    	_this.osc = _this.context.createOscillator();
+    	_this.gain = _this.context.createGain();
+    	_this.osc.connect(_this.gain);
+    	_this.gain.connect(_this.context.destination);
+    };
 
-	_this.setup();
+    LowTom.prototype.trigger = function(time) {
+    	var _this = this;
 
-	_this.osc.frequency.setValueAtTime(250, time);
-	_this.gain.gain.setValueAtTime(1.5, time);
+    	_this.setup();
 
-	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
-	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
+    	_this.osc.frequency.setValueAtTime(250, time);
+    	_this.gain.gain.setValueAtTime(1.5, time);
 
-	_this.osc.start(time);
+    	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
+    	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
 
-	_this.osc.stop(time + 1);
-};
+    	_this.osc.start(time);
 
+    	_this.osc.stop(time + 1);
+    };
 
-/* HiTom */
 
-function HiTom(context) {
-	var _this = this;
+    /* HiTom */
 
-	_this.context = context;
-};
+    function HiTom(context) {
+    	var _this = this;
 
-HiTom.prototype.setup = function() {
-	var _this = this;
+    	_this.context = context;
+    }
 
-	_this.osc = _this.context.createOscillator();
-	_this.gain = _this.context.createGain();
-	_this.osc.connect(_this.gain);
-	_this.gain.connect(_this.context.destination)
-};
+    HiTom.prototype.setup = function() {
+    	var _this = this;
 
-HiTom.prototype.trigger = function(time) {
-	var _this = this;
+    	_this.osc = _this.context.createOscillator();
+    	_this.gain = _this.context.createGain();
+    	_this.osc.connect(_this.gain);
+    	_this.gain.connect(_this.context.destination);
+    };
 
-	_this.setup();
+    HiTom.prototype.trigger = function(time) {
+    	var _this = this;
 
-	_this.osc.frequency.setValueAtTime(400, time);
-	_this.gain.gain.setValueAtTime(1.5, time);
+    	_this.setup();
 
-	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
-	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
+    	_this.osc.frequency.setValueAtTime(400, time);
+    	_this.gain.gain.setValueAtTime(1.5, time);
 
-	_this.osc.start(time);
+    	_this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
+    	_this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
 
-	_this.osc.stop(time + 1);
-};
+    	_this.osc.start(time);
+
+    	_this.osc.stop(time + 1);
+    };
+})();

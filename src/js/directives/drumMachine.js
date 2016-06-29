@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
 
 	angular.module('drummerJS')
 
@@ -11,6 +12,5 @@
 		};
 
 		return directiveDefinitionObject;
-		
 	});
 })();
