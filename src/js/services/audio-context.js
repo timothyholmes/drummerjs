@@ -3,7 +3,7 @@
 
     angular.module('drummerJS')
 
-    .service('sampler', function($http){
+    .service('audioContext', function($http){
         var _this = this,
             context = new AudioContext();
 

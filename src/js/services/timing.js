@@ -22,6 +22,10 @@
             return _this.properties.tempo;
         };
 
+        _this.getRefreshInterval = function() {
+            return _this.properties.refreshInterval;
+        };
+
         _this.togglePause = function(statu) {
             _this.properties.pause = !_this.properties.pause;
         };
@@ -32,41 +36,39 @@
 
         _this.pauseTimer = function() {
             if(_this.properties.pause === false)
-                clearInterval(refreshInterval);
+                clearInterval(_this.properties.refreshInterval);
             else
                 _this.startTimer();
         };
 
         _this.stopTimer = function(){
             _this.properties.currentBeat = 0;
-            clearInterval(refreshInterval);
+            clearInterval(_this.properties.refreshInterval);
         };
 
         _this.startTimer = function() {
 
-            clearInterval(refreshInterval);
+            clearInterval(_this.properties.refreshInterval);
 
-            refreshInterval = setInterval(function(){
+            _this.properties.refreshInterval = setInterval(function(){
+                var x = document.getElementsByClassName('beatMarker');
+                document.getElementsByClassName('col' + _this.properties.currentBeat)[0].style.backgroundColor = "#FF3C00";
 
-            var x = document.getElementsByClassName('beatMarker');
+                var soundsToPlay = _this.sampler.filter(function(e) {
+                    return e.class == 'col' + _this.properties.currentBeat;
+                });
 
-            for(var i = 0; i < x.length; i++) {
-            	x[i].style.backgroundColor = '#F5C009';
-            }
+                for(var i = 0; i < x.length; i++) {
+                	x[i].style.backgroundColor = '#F5C009';
+                }
 
-            document.getElementsByClassName('col' + _this.properties.currentBeat)[0].style.backgroundColor = "#FF3C00";
+                for (var j = 0; j < soundsToPlay.length; j++) {
+                	_this.playSound(soundsToPlay[i]);
+                }
 
-            var soundsToPlay = _this.sampler.filter(function(e) {
-            	return e.class == 'col' + _this.properties.currentBeat;
-            });
-
-            for (var j = 0; j < soundsToPlay.length; j++) {
-            	_this.playSound(soundsToPlay[i]);
-            }
-
-            _this.properties.currentBeat++;
-            if(_this.properties.currentBeat >= 16)
-            	_this.properties.currentBeat = 0;
+                _this.properties.currentBeat++;
+                if(_this.properties.currentBeat >= 16)
+                	_this.properties.currentBeat = 0;
             }, _this.setTempo(_this.bpm));
         };
     });

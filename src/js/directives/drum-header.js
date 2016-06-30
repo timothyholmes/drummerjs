@@ -4,12 +4,18 @@
 	angular.module('drummerJS')
 
     .controller('DrumHeaderController', [
-        '$scope',
+        'sampler',
         function(
-            $scope
+            sampler
         ) {
             var _this = this;
 
+            _this.sampler = sampler.getSampler();
+
+            _this.clearPads = function() {
+                for(var i = 0; i < _this.sampler.length; i++)
+                    _this.sampler[i].on = false;
+            };
     }])
 
 	.directive('drumHeader', function () {

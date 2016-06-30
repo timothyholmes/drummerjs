@@ -4,20 +4,24 @@
     angular.module('drummerJS')
 
     .controller('DrumMachineController', [
-        function() {
+        'audioContext',
+        'drumKit',
+        function(
+            audioContext,
+            drumKit
+        ) {
             var _this = this;
 
-            _this.loopingStatus = function() {
-                return _this.startLoop;
-            };
+            _this.drumKit = drumKit.buildKit();
 
             _this.playSound = function(sound) {
-                var now = context.currentTime;
+                var now = audioContext.getContext().currentTime;
                 if(sound.on === true) {
                     drumKit[sound.type].trigger(now);
                 }
             };
-    }])
+        }
+    ])
 
     .directive('drumMachine', function () {
 
