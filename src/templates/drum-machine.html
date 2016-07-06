@@ -1,23 +1,45 @@
 <div class="grid">
 	<div data-ng-hide="!mchnCtrl.startLoop">
-		<span data-ng-repeat="marker in mchnCtrl.sampler | filter: {type:'marker'}" class="beatMarker" data-ng-class="mchnCtrl.getClass(marker)"></span>
+		<span
+            class="beatMarker"
+            data-ng-repeat="marker in mchnCtrl.sampler | filter: {type:'marker'}"
+            data-ng-class="mchnCtrl.getClass(marker)">
+        </span>
 	</div>
 	<div>
-		<span data-ng-repeat="kick in mchnCtrl.sampler | filter: {type:'kick'}" class="box" data-ng-init="kick.on = false" data-ng-class="{'boxsoundon': kick.on}" data-ng-click="kick.on = !kick.on; mchnCtrl.playSound(kick)"></span>
+		<sample-pad
+            data-ng-repeat="kick in mchnCtrl.sampler | filter: {type:'kick'}"
+            data-sound-type="kick">
+        </sample-pad>
 	</div>
-	<div>
-		<span data-ng-repeat="snare in mchnCtrl.sampler | filter: {type:'snare'}" class="box" data-ng-init="snare.on = false" data-ng-class="{'boxsoundon': snare.on}" data-ng-click="snare.on = !snare.on; mchnCtrl.playSound(snare)"></span>
+    <div>
+		<sample-pad
+            data-ng-repeat="snare in mchnCtrl.sampler | filter: {type:'snare'}"
+            data-sound-type="snare">
+        </sample-pad>
 	</div>
-	<div>
-		<span data-ng-repeat="hihat in mchnCtrl.sampler | filter: {type:'hihat'}" class="box" data-ng-init="hihat.on = false" data-ng-class="{'boxsoundon': hihat.on}" data-ng-click="hihat.on = !hihat.on; mchnCtrl.playSound(hihat)"></span>
+    <div>
+		<sample-pad
+            data-ng-repeat="hihat in mchnCtrl.sampler | filter: {type:'hihat'}"
+            data-sound-type="hihat">
+        </sample-pad>
 	</div>
-	<div>
-		<span data-ng-repeat="openhat in mchnCtrl.sampler | filter: {type:'openhat'}" class="box" data-ng-init="openhat.on = false" data-ng-class="{'boxsoundon': openhat.on}" data-ng-click="openhat.on = !openhat.on; mchnCtrl.playSound(openhat)"></span>
+    <div>
+		<sample-pad
+            data-ng-repeat="openhat in mchnCtrl.sampler | filter: {type:'openhat'}"
+            data-sound-type="openhat">
+        </sample-pad>
 	</div>
-	<div>
-		<span data-ng-repeat="hitom in mchnCtrl.sampler | filter: {type:'hitom'}" class="box" data-ng-init="hitom.on = false" data-ng-class="{'boxsoundon': hitom.on}" data-ng-click="hitom.on = !hitom.on; mchnCtrl.playSound(hitom)"></span>
+    <div>
+		<sample-pad
+            data-ng-repeat="lowtom in mchnCtrl.sampler | filter: {type:'lowtom'}"
+            data-sound-type="lowtom">
+        </sample-pad>
 	</div>
-	<div>
-		<span data-ng-repeat="lowtom in mchnCtrl.sampler | filter: {type:'lowtom'}" class="box" data-ng-init="lowtom.on = false" data-ng-class="{'boxsoundon': lowtom.on}" data-ng-click="lowtom.on = !lowtom.on; mchnCtrl.playSound(lowtom)"></span>
+    <div>
+		<sample-pad
+            data-ng-repeat="hitom in mchnCtrl.sampler | filter: {type:'hitom'}"
+            data-sound-type="hitom">
+        </sample-pad>
 	</div>
 </div>

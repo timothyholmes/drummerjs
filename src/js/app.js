@@ -1,6 +1,9 @@
 (function() {
     'use strict';
 
-	angular.module('drummerJS', []);
+	angular.module('drummerJS', [
+        'thUserInterface',
+        'thAudioComponents'
+    ]);
 
 })();

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-	angular.module('drummerJS')
+	angular.module('thUserInterface')
 
     .controller('DrumHeaderController', [
         'sampler',

@@ -1,9 +1,9 @@
 (function() {
     'use strict';
 
-    angular.module('drummerJS')
+    angular.module('thAudioComponents')
 
-    .service('audioContext', function($http){
+    .service('audioContext', function(){
         var _this = this,
             context = new AudioContext();
 

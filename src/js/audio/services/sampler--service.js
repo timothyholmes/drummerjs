@@ -1,23 +1,13 @@
 (function() {
 	'use strict';
 
-	angular.module('drummerJS')
+	angular.module('thAudioComponents')
 
-	.service('sampler', function($http){
-        var _this = this;
+	.service('sampler', ['soundBuilder', function(soundBuilder){
+        var _this = this,
+            context = new AudioContext();
 
         _this.sampler = [];
-
-        _this.grinding = {
-            name: 'grinding',
-            tempo: 100,
-            kicks: ['col0', 'col6', 'col7', 'col9', 'col10', 'col13', 'col15'],
-            snares: ['col4', 'col12'],
-            hihats: ['col4', 'col12'],
-            openhats: ['col4', 'col12'],
-            lowtoms: ['col0', 'col6', 'col7', 'col9', 'col10', 'col13', 'col15'],
-            hitoms: []
-        };
 
         _this.initSampler = function() {
             for(var i = 0; i < 7; i++) {
@@ -36,13 +26,15 @@
                     _this.sampler.push({
                         type: type,
                         on: false,
-                        class: 'col' + j
+                        class: 'col' + j,
+                        sound: soundBuilder.getSound(context, type)
                     });
                 }
             }
         };
 
         _this.getSampler = function() {
+            console.log(_this.sampler);
             return _this.sampler;
         };
 
@@ -79,6 +71,5 @@
         };
 
         _this.initSampler();
-
-	});
+	}]);
 })();

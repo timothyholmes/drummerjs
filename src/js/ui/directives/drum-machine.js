@@ -1,25 +1,16 @@
 (function() {
     'use strict';
 
-    angular.module('drummerJS')
+    angular.module('thUserInterface')
 
     .controller('DrumMachineController', [
-        'audioContext',
-        'drumKit',
+        'sampler',
         function(
-            audioContext,
-            drumKit
+            sampler
         ) {
             var _this = this;
 
-            _this.drumKit = drumKit.buildKit();
-
-            _this.playSound = function(sound) {
-                var now = audioContext.getContext().currentTime;
-                if(sound.on === true) {
-                    _this.drumKit[sound.type].trigger(now);
-                }
-            };
+            _this.sampler = sampler.getSampler();
         }
     ])
 

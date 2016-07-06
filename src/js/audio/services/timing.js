@@ -1,9 +1,9 @@
 (function() {
     'use strict';
 
-    angular.module('drummerJS')
+    angular.module('thAudioComponents')
 
-    .service('timing', function($http){
+    .service('timing', function(){
         var _this = this;
 
         _this.properties = {

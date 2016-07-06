@@ -13,6 +13,8 @@ bpm
 
 ### machine
 
+sampler
+
 ## grinding
 
 _this.grinding = {
