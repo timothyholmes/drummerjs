@@ -4,27 +4,28 @@
 	angular.module('thUserInterface')
 
     .controller('DrumHeaderController', [
-        'sampler',
-        function(
-            sampler
-        ) {
+        'timing',
+        function(timing) {
             var _this = this;
 
-            _this.sampler = sampler.getSampler();
-
-            _this.clearPads = function() {
-                sampler.clearPads();
+            _this.startTimer = function() {
+                timing.startTimer();
             };
-    }])
 
-	.directive('drumHeader', function () {
+            _this.stopTimer = function () {
+                timing.stopTimer();
+            };
+        }
+    ])
 
-		var drumHeaderDirective = {
-			templateUrl: './templates/drum-header.html',
-			controller: 'DrumHeaderController',
-			controllerAs: 'hdrCtrl'
-		};
+    .directive('drumHeader', function () {
 
-		return drumHeaderDirective;
-	});
+        var drumHeaderDirective = {
+            templateUrl: './templates/drum-header.html',
+            controller: 'DrumHeaderController',
+            controllerAs: 'hdrCtrl'
+        };
+
+        return drumHeaderDirective;
+    });
 })();

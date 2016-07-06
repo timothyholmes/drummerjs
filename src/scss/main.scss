@@ -30,6 +30,12 @@ h2, h3, h4, h5, h6 {
 	&:active {
 		box-shadow: none;
 	}
+    &.currentBeat {
+        background-color: #FF3C00;
+    }
+    &.notCurrentBeat {
+        background-color: #F5C009;
+    }
 }
 
 .beatMarker {

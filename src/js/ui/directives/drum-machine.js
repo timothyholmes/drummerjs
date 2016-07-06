@@ -4,13 +4,13 @@
     angular.module('thUserInterface')
 
     .controller('DrumMachineController', [
-        'sampler',
+        'drumMachineBuilder',
         function(
-            sampler
+            drumMachineBuilder
         ) {
             var _this = this;
 
-            _this.sampler = sampler.getSampler();
+            _this.sampler = drumMachineBuilder.getSampler();
         }
     ])
 

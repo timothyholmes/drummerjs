@@ -3,7 +3,7 @@
 
     angular.module('thAudioComponents')
 
-    .service('timing', function(){
+    .service('timing', ['$document', function($document){
         var _this = this;
 
         _this.properties = {
@@ -52,10 +52,11 @@
 
             _this.properties.refreshInterval = setInterval(function(){
                 var x = document.getElementsByClassName('beatMarker');
-                document.getElementsByClassName('col' + _this.properties.currentBeat)[0].style.backgroundColor = "#FF3C00";
+                // document.getElementsByClassName('col' + _this.properties.currentBeat)[0].style.backgroundColor = "#FF3C00";
+                console.log(angular.element('.col' + _this.properties.currentBeat));
 
                 var soundsToPlay = _this.sampler.filter(function(e) {
-                    return e.class == 'col' + _this.properties.currentBeat;
+                    return e.class === 'col' + _this.properties.currentBeat;
                 });
 
                 for(var i = 0; i < x.length; i++) {
@@ -63,7 +64,8 @@
                 }
 
                 for (var j = 0; j < soundsToPlay.length; j++) {
-                	_this.playSound(soundsToPlay[i]);
+                    if(soundsToPlay[i].on)
+                        soundsToPlay[i].play();
                 }
 
                 _this.properties.currentBeat++;
@@ -71,5 +73,5 @@
                 	_this.properties.currentBeat = 0;
             }, _this.setTempo(_this.bpm));
         };
-    });
+    }]);
 })();
