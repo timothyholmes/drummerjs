@@ -17,7 +17,7 @@
             _this.playSound = function(sound) {
                 var now = audioContext.getContext().currentTime;
                 if(sound.on === true) {
-                    drumKit[sound.type].trigger(now);
+                    _this.drumKit[sound.type].trigger(now);
                 }
             };
         }

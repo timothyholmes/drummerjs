@@ -13,8 +13,7 @@
             _this.sampler = sampler.getSampler();
 
             _this.clearPads = function() {
-                for(var i = 0; i < _this.sampler.length; i++)
-                    _this.sampler[i].on = false;
+                sampler.clearPads();
             };
     }])
 

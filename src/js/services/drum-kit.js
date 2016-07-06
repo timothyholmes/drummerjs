@@ -3,7 +3,7 @@
 
     angular.module('drummerJS')
 
-    .service('drumKit', function($http){
+    .service('drumKit', function(){
         var _this = this;
 
         _this.buildKit = function() {
