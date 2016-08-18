@@ -53,10 +53,12 @@
 
             _this.startTimer = function() {
 
+                console.log($document[0]);
+
                 clearInterval(_this.properties.refreshInterval);
 
-                _this.properties.refreshInterval = setInterval(function(){
-                    var x = $document.getElementsByClassName('beatMarker');
+                _this.properties.refresshInterval = setInterval(function(){
+                    var x = $document[0].getElementsByClassName('beatMarker');
                     // document.getElementsByClassName('col' + _this.properties.currentBeat)[0].style.backgroundColor = "#FF3C00";
 
                     var soundsToPlay = _this.sampler.filter(function(e) {
