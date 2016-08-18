@@ -16,5 +16,8 @@
   "smarttabs": true,
   "white": false,
   "sub": true,
-  "globals": { "angular": true }
+  "globals": {
+      "angular": true,
+      "AudioContext": true
+  }
 }

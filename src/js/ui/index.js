@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
-	angular.module('thUserInterface', ['thAudioComponents']);
+	angular.module('thUserInterface', [
+        'thAudioComponents'
+    ]);
 
 })();

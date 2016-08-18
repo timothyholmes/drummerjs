@@ -6,10 +6,6 @@
     .service('soundBuilder', function(){
         var _this = this;
 
-        _this.getSound = function(context, type) {
-            return new Sound(context, type);
-        };
-
         function Sound(context, type) {
             var self = this;
 
@@ -298,5 +294,9 @@
                 return 'no matching type';
             }
         }
+
+        _this.getSound = function(context, type) {
+            return new Sound(context, type);
+        };
     });
 })();

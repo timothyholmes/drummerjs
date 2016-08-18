@@ -5,7 +5,9 @@
 
     .controller('DrumHeaderController', [
         'timing',
-        function(timing) {
+        function(
+            timing
+        ) {
             var _this = this;
 
             _this.startTimer = function() {
