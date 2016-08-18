@@ -10,12 +10,16 @@
         ) {
             var _this = this;
 
-            _this.startTimer = function() {
-                timing.startTimer();
+            _this.bpm = timing.getBPM();
+
+            _this.addBPM = function() {
+                timing.setBPM(1);
+                _this.bpm = timing.getBPM();
             };
 
-            _this.stopTimer = function () {
-                timing.stopTimer();
+            _this.subBPM = function() {
+                timing.setBPM(-1);
+                _this.bpm = timing.getBPM();
             };
         }
     ])
