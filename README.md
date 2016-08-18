@@ -1,6 +1,6 @@
 # drummerjs
 
-Web based drum machine. 
+Web based drum machine.
 
 [Live version here.](http://drummerjs.timholm.es/)
 
@@ -60,10 +60,3 @@ gulp watch
 + The tempo markers flash on the down and up beats.
 + Adjust the tempo with the tempo controls while the loop is paused.
 + Use 'Clear' clear the selections.
-
-## Reference
-
-This article wonderfully laid out the magic of the web audio api!
-
-+ [Web Audio Tutorial](https://dev.opera.com/articles/drum-sounds-webaudio/)
-+ [Web Audio Docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
