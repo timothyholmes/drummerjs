@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('thAudioComponents')
+    angular.module('thUserInterface')
 
     /**
      * @ngdoc controller

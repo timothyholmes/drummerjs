@@ -23,8 +23,6 @@
                 looping: false,
             };
 
-            _this.callbackListeners = {};
-
             /**
              * @ngdoc method
              * @name timing#adjustTempo
@@ -83,9 +81,9 @@
              * @description
              *
              */
-            _this.onPropertyUpdate = function() {
+             _this.onPropertyUpdate = function (thisArg, callback) {
 
-            };
+             };
         }
     ]);
 })();

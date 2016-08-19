@@ -20,17 +20,24 @@
     .controller('DrumMachineController', [
         'drumMachineBuilder',
         '$document',
-        '$interval',
         'timing',
-        function(
+        '$scope',
+        function (
             drumMachineBuilder,
             $document,
-            $interval,
-            timing
+            timing,
+            $scope
         ) {
             var _this = this;
 
             _this.sampler = drumMachineBuilder.getSampler();
+
+            $scope.$watch(function () {
+                return timing.getProperties();
+            },
+            function (newVal) {
+                console.log(newVal);
+            });
 
             /**
              * @ngdoc method
@@ -83,14 +90,22 @@
      * @description
      * Creates directive for the drum machine
      */
-    .directive('drumMachine', function () {
+    .directive('drumMachine', ['timing', function (timing) {
 
         var drumHeaderDirective = {
             templateUrl: './templates/drum-machine.html',
             controller: 'DrumMachineController',
-            controllerAs: 'mchnCtrl'
+            controllerAs: 'mchnCtrl',
+            link: function (scope, element, attrs) {
+                scope.$watch(function () {
+                    return timing.getProperties();
+                },
+                function (newVal) {
+                    console.log(newVal);
+                });
+            }
         };
 
         return drumHeaderDirective;
-    });
+    }]);
 })();

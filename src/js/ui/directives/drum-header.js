@@ -19,8 +19,7 @@
         function(
             timing
         ) {
-            var _this = this,
-                timingProperties = timing.getProperties();
+            var _this = this;
 
             _this.bpm = timing.getProperties().tempo;
 
