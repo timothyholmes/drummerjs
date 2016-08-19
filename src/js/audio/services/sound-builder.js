@@ -3,9 +3,30 @@
 
     angular.module('thAudioComponents')
 
+    /**
+     * @ngdoc service
+     * @name soundBuilder
+     * @module thAudioComponents
+     *
+     * @description
+     * Service for creating the sounds used in the drum machine
+     */
     .service('soundBuilder', function(){
         var _this = this;
 
+        /**
+         * @ngdoc constructor
+         * @name soundBuilder#sound
+         * @module thAudioComponents
+         *
+         * @param {AudioContext} context
+         * @param {string} type
+         *
+         * @description
+         * Constructor for the sound objects
+         *
+         * @return {Sound}
+         */
         function Sound(context, type) {
             var self = this;
 
@@ -295,6 +316,16 @@
             }
         }
 
+        /**
+         * @ngdoc method
+         * @name getSound
+         * @module thAudioComponents
+         *
+         * @param {AudioContext} context
+         * @param {string} type
+         *
+         * @return {Sound}
+         */
         _this.getSound = function(context, type) {
             return new Sound(context, type);
         };

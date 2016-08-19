@@ -2,7 +2,7 @@
   "name": "drummerjs",
   "version": "1.0.0",
   "description": "Web Based Drum Machine",
-  "main": "gulpfile.js",
+  "main": "js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

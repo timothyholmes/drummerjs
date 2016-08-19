@@ -3,6 +3,20 @@
 
     angular.module('thUserInterface')
 
+    /**
+     * @ngdoc controller
+     * @name DrumMachineController
+     * @module thUserInterface
+     *
+     * @requires drumMachineBuilder
+     * @requires $document
+     * @requires $interval
+     * @requires timing
+     *
+     * @description
+     * Controller for the drum machine
+     *
+     */
     .controller('DrumMachineController', [
         'drumMachineBuilder',
         '$document',
@@ -18,6 +32,14 @@
 
             _this.sampler = drumMachineBuilder.getSampler();
 
+            /**
+             * @ngdoc method
+             * @name DrumMachineController#loop
+             * @module thUserInterface
+             *
+             * @description
+             * Starts the loop for the drum machine
+             */
             _this.loop = function() {
                 var currentBeat = 0,
                     refreshInterval;
@@ -50,11 +72,17 @@
                      }
                  }, 60000 / (4 * timing.getBPM()));
             };
-
-
         }
     ])
 
+    /**
+     * @ngdoc directive
+     * @name drumMachine
+     * @module thUserInterface
+     *
+     * @description
+     * Creates directive for the drum machine
+     */
     .directive('drumMachine', function () {
 
         var drumHeaderDirective = {
