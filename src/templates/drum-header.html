@@ -3,19 +3,19 @@
 		<h1>drummerjs</h1>
 		<button type=button
             class="btn btn-success"
-            data-ng-click="hdrCtrl.startTimer(); hdrCtrl.startLoop = !hdrCtrl.startLoop; hdrCtrl.paused = false"
+            data-ng-click="hdrCtrl.loop(); hdrCtrl.startLoop = !hdrCtrl.startLoop; hdrCtrl.paused = false"
             data-ng-hide="hdrCtrl.startLoop">
             <span class="glyphicon glyphicon-play"></span>
         </button>
 		<button type=button
             class="btn btn-success"
-            data-ng-click="hdrCtrl.pauseTimer(); hdrCtrl.paused = false;"
+            data-ng-click="hdrCtrl.loop(); hdrCtrl.paused = false;"
             data-ng-show="hdrCtrl.startLoop && hdrCtrl.paused == true">
             <span class="glyphicon glyphicon-play"></span>
         </button>
 		<button type=button
             class="btn btn-warning"
-            data-ng-click="hdrCtrl.pauseTimer(); hdrCtrl.paused = true;"
+            data-ng-click="hdrCtrl.loop(); hdrCtrl.paused = true;"
             data-ng-show="hdrCtrl.startLoop && hdrCtrl.paused == false">
             <span class="glyphicon glyphicon-pause"></span>
         </button>

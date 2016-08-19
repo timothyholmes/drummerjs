@@ -25,6 +25,12 @@
             _this.getBPM = function(inc) {
                 return _this.properties.tempo;
             };
+
+            _this.togglePause = function() {
+                _this.properties.pause = !_this.properties.pause;
+                _this.properties.startLoop = !_this.properties.startLoop;
+                console.log(_this.properties);
+            };
         }
     ]);
 })();

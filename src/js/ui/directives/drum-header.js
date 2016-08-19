@@ -21,6 +21,10 @@
                 timing.setBPM(-1);
                 _this.bpm = timing.getBPM();
             };
+
+            _this.loop = function() {
+                timing.togglePause();
+            };
         }
     ])
 
