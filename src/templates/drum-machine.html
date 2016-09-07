@@ -1,45 +1,45 @@
 <div class="grid">
-	<div data-ng-hide="!mchnCtrl.startLoop">
-		<span
+    <div data-ng-hide="!mchnCtrl.startLoop">
+        <span
             class="beatMarker"
             data-ng-repeat="marker in mchnCtrl.sampler | filter: {type:'kick'}"
             data-ng-class="mchnCtrl.getClass(marker)">
         </span>
-	</div>
-	<div>
-		<sample-pad
+    </div>
+    <div>
+        <sample-pad
             data-ng-repeat="kick in mchnCtrl.sampler | filter: {type:'kick'}"
             data-sound-type="kick">
         </sample-pad>
-	</div>
+    </div>
     <div>
-		<sample-pad
+        <sample-pad
             data-ng-repeat="snare in mchnCtrl.sampler | filter: {type:'snare'}"
             data-sound-type="snare">
         </sample-pad>
-	</div>
+    </div>
     <div>
-		<sample-pad
+        <sample-pad
             data-ng-repeat="hihat in mchnCtrl.sampler | filter: {type:'hihat'}"
             data-sound-type="hihat">
         </sample-pad>
-	</div>
+    </div>
     <div>
-		<sample-pad
+        <sample-pad
             data-ng-repeat="openhat in mchnCtrl.sampler | filter: {type:'openhat'}"
             data-sound-type="openhat">
         </sample-pad>
-	</div>
+    </div>
     <div>
-		<sample-pad
+        <sample-pad
             data-ng-repeat="lowtom in mchnCtrl.sampler | filter: {type:'lowtom'}"
             data-sound-type="lowtom">
         </sample-pad>
-	</div>
+    </div>
     <div>
-		<sample-pad
+        <sample-pad
             data-ng-repeat="hitom in mchnCtrl.sampler | filter: {type:'hitom'}"
             data-sound-type="hitom">
         </sample-pad>
-	</div>
+    </div>
 </div>
