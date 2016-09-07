@@ -31,7 +31,7 @@
              * Builds a matrix of sound objects for the synthesizer
              */
             function initDrumMachine() {
-                for(var i = 0; i < 7; i++) {
+                for(let i = 0; i < 7; i++) {
                     var type = '';
 
                     if(i < 2) {
@@ -44,7 +44,7 @@
                         type = 'hitom';
                     }
 
-                    for(var j = 0; j <= 15; j++) {
+                    for(let j = 0; j <= 15; j++) {
                         drumMachine.push({
                             type: type,
                             on: false,

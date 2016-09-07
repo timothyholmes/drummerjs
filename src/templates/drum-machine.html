@@ -2,7 +2,7 @@
 	<div data-ng-hide="!mchnCtrl.startLoop">
 		<span
             class="beatMarker"
-            data-ng-repeat="marker in mchnCtrl.sampler | filter: {type:'marker'}"
+            data-ng-repeat="marker in mchnCtrl.sampler | filter: {type:'kick'}"
             data-ng-class="mchnCtrl.getClass(marker)">
         </span>
 	</div>

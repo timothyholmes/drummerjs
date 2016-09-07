@@ -14,6 +14,10 @@
     .controller('SamplePadController', [
         function() {
             var _this = this;
+
+            _this.toggle = function() {
+
+            };
         }
     ])
 

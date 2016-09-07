@@ -22,22 +22,20 @@
         '$document',
         'timing',
         '$scope',
+        '$interval',
         function (
             drumMachineBuilder,
             $document,
             timing,
-            $scope
+            $scope,
+            $interval
         ) {
-            var _this = this;
+            var _this = this,
+                refreshInterval;
 
             _this.sampler = drumMachineBuilder.getSampler();
 
-            $scope.$watch(function () {
-                return timing.getProperties();
-            },
-            function (newVal) {
-                console.log(newVal);
-            });
+            $scope.service = timing;
 
             /**
              * @ngdoc method
@@ -47,24 +45,22 @@
              * @description
              * Starts the loop for the drum machine
              */
-            _this.loop = function() {
-                var currentBeat = 0,
-                    refreshInterval;
+             _this.loop = function() {
+                var currentBeat = 0;
 
-                clearInterval(refreshInterval);
-
-                refreshInterval = setInterval(function(){
-                     var x = $document[0].getElementsByClassName('beatMarker');
-                     $document.getElementsByClassName('col' + currentBeat)[0].style.backgroundColor = '#FF3C00';
-
-                     console.log(x);
+                refreshInterval = $interval(function(){
+                     var x = document.getElementsByClassName('beatMarker');
+                     document.getElementsByClassName('col' + currentBeat)[0].style.backgroundColor = '#FF3C00';
 
                      var soundsToPlay = _this.sampler.filter(function(e) {
                          return e.class === 'col' + currentBeat;
                      });
 
+                     console.log(soundsToPlay);
+
                      for(var i = 0; i < x.length; i++) {
-                     	x[i].style.backgroundColor = '#F5C009';
+                         console.log(x[i].style.backgroundColor);
+                         x[i].style.backgroundColor = '#F5C009';
                      }
 
                      for (var j = 0; j < soundsToPlay.length; j++) {
@@ -73,12 +69,24 @@
                          }
                      }
 
-                     _this.properties.currentBeat++;
-                     if(_this.properties.currentBeat >= 16) {
-                     	_this.properties.currentBeat = 0;
+                     currentBeat++;
+                     if(currentBeat >= 16) {
+                     	currentBeat = 0;
                      }
-                 }, 60000 / (4 * timing.getBPM()));
+                 }, 60000 / (4 * timing.getProperties().tempo));
             };
+
+            _this.clearInterval = function () {
+                $interval.cancel(refreshInterval);
+            };
+
+            $scope.$watch('service.getProperties().pause', function (newVal, oldVal) {
+                if(newVal === false) {
+                    _this.loop();
+                } else if(newVal === true) {
+                    _this.clearInterval();
+                }
+            });
         }
     ])
 
@@ -95,15 +103,7 @@
         var drumHeaderDirective = {
             templateUrl: './templates/drum-machine.html',
             controller: 'DrumMachineController',
-            controllerAs: 'mchnCtrl',
-            link: function (scope, element, attrs) {
-                scope.$watch(function () {
-                    return timing.getProperties();
-                },
-                function (newVal) {
-                    console.log(newVal);
-                });
-            }
+            controllerAs: 'mchnCtrl'
         };
 
         return drumHeaderDirective;

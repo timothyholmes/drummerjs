@@ -13,15 +13,14 @@
      */
     .service('timing', [
         function(){
-            var _this = this;
-
-            _this.properties = {
-                tempo: 120,
-                pause: true,
-                currentBeat: 0,
-                refreshInterval: 0,
-                looping: false,
-            };
+            let _this = this,
+                properties = {
+                    tempo: 120,
+                    pause: true,
+                    currentBeat: 0,
+                    refreshInterval: 0,
+                    looping: false,
+                };
 
             /**
              * @ngdoc method
@@ -34,7 +33,7 @@
              * Adds the inc param to the current tempo
              */
             _this.adjustTempo = function(inc) {
-                _this.properties.tempo = _this.properties.tempo + inc;
+                properties.tempo = properties.tempo + inc;
             };
 
             /**
@@ -46,7 +45,7 @@
              * Returns the properties
              */
             _this.getProperties = function() {
-                return _this.properties;
+                return properties;
             };
 
             /**
@@ -58,7 +57,7 @@
              * Toggles the pause attribute of properties
              */
             _this.togglePause = function() {
-                _this.properties.pause = !_this.properties.pause;
+                properties.pause = !properties.pause;
             };
 
             /**
@@ -70,7 +69,7 @@
              * Toggles the looping attribute of properties
              */
             _this.toggleLooping = function() {
-                _this.properties.looping = !_this.properties.looping;
+                properties.looping = !properties.looping;
             };
 
             /**

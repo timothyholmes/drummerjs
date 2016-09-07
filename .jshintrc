@@ -18,6 +18,7 @@
   "sub": true,
   "globals": {
       "angular": true,
-      "AudioContext": true
+      "AudioContext": true,
+      "document": true
   }
 }

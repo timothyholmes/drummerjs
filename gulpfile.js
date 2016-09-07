@@ -56,7 +56,7 @@ gulp.task('lint', function() {
 gulp.task('build', function (callback) {
     runSequence('clean:dist',
         'sass',
-        'useref',
+        // 'useref',
         'move-components',
         'move-templates',
         callback
