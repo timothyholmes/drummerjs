@@ -2,8 +2,6 @@
 
 Web based drum machine.
 
-[Live version here.](http://drummerjs.timholm.es/)
-
 ## Building
 
 Instructions intended for Linux users. Mac users may need to prefix these comands with the 'sudo' keyword.
