@@ -4,7 +4,7 @@ Web based drum machine.
 
 ## Building
 
-Instructions intended for Linux users. Mac users may need to prefix these comands with the 'sudo' keyword.
+Instructions intended for Linux users. Mac users may need to prefix these commands with the 'sudo' keyword.
 
 To install dependencies
 
