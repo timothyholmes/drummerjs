@@ -4,8 +4,6 @@ Web based drum machine.
 
 ## Building
 
-Instructions intended for Linux users. Mac users may need to prefix these commands with the 'sudo' keyword.
-
 To install dependencies
 
 ```shell
@@ -21,7 +19,7 @@ npm install gulp -g
 Default build (build project + start webserver + watch sass)
 
 ```shell
-gulp default
+gulp
 ```
 
 After building, the app is viewable at:
