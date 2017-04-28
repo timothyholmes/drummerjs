@@ -1,14 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
-import AwesomeComponent from './AwesomeComponent.jsx';
-import './style/main.scss';
+import ComponentName from './ComponentName.jsx';
+import './style/main.css';
 
 class App extends React.Component {
   render () {
     return (
-      <div className="test-class">
-        <p>Hello my guy!</p>
-        <AwesomeComponent />
+      <div>
+        <p className="test">Hello my guy!</p>
       </div>
     );
   }
