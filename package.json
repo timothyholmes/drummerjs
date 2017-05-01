@@ -5,8 +5,12 @@
   "main": "",
   "scripts": {
     "start": "node .",
-    "dev": "webpack -d --watch",
-    "build": "webpack -p"
+    "dev": "npm run build && npm run watch",
+    "build": "npm run build-sass && webpack -p",
+    "deploy": "npm run build-sass && webpack -p && node .",
+    "watch": "concurrently \"webpack -d --watch\" \"npm run watch-sass\" \"npm run start\"",
+    "watch-sass": "nodemon -e scss -w src/client/style/ -x 'npm run build-sass'",
+    "build-sass": "node-sass --output-style nested src/client/style/main.scss src/client/public/main.css"
   },
   "repository": {
     "type": "git",
@@ -25,6 +29,7 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+    "concurrently": "^3.4.0",
     "good": "^7.0.1",
     "good-console": "^6.1.2",
     "good-squeeze": "^4.0.0",
@@ -38,6 +43,8 @@
   "devDependencies": {
     "css-loader": "^0.28.0",
     "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.1"
+    "style-loader": "^0.16.1",
+    "node-sass": "^3.13.0",
+    "nodemon": "^1.11.0"
   }
 }

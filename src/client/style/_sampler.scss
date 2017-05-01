@@ -1,0 +1,22 @@
+.header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+.sampler-container {
+    width: 560px;
+    margin-left: 25%;
+
+    .box {
+        height: $box-size;
+        border: 0;
+        width: $box-size;
+        display: inline-block;
+        margin: 0px 3px 3px 0px;
+        background-color: $box-color;
+
+        &:hover {
+            background-color: darken($box-color, 20%);
+        }
+    }
+}

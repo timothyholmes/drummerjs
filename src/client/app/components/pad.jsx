@@ -1,10 +1,15 @@
 import React from 'react';
-import '../../style/main.css';
+import '../../public/main.css';
+import classNames from 'classnames'
 
 function Pad(props) {
-    console.log('props', props);
+    const classes = classNames('box', {
+        active: props.value.trigger,
+        inactive: !props.value.trigger
+    });
+
     return (
-        <button className="box"
+        <button className={classes}
             onClick={ () => props.onClick() }>
         </button>
     );

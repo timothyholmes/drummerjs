@@ -35,8 +35,7 @@ class Sampler extends React.Component {
         console.log('play sound', this.state.pads[i]);
     }
     renderPad(i) {
-        return <Pad value={ this.state.pads[i] }
-                onClick={ () => this.handleTrigger(i) } />;
+        return <Pad value={ this.state.pads[i] } onClick={ () => this.handleTrigger(i) } />;
     }
     render() {
         const padState = _.clone(this.state.pads);

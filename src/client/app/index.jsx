@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Sampler from './components/sampler.jsx';
-import '../style/main.css';
+import '../public/main.css';
 
 class DrumMachine extends React.Component {
     constructor() {
@@ -10,7 +10,7 @@ class DrumMachine extends React.Component {
             controls: {
                 tempo: 120
             },
-            name: 'DrummerJS'
+            name: 'drummer'
         }
     }
     render () {
