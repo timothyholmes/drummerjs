@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import ComponentName from './components/ComponentName.jsx';
+import Sampler from './components/sampler.jsx';
 import '../style/main.css';
 
 class DrumMachine extends React.Component {
@@ -16,7 +16,10 @@ class DrumMachine extends React.Component {
     render () {
         return (
             <div>
-                <h1>{ this.state.name }</h1>
+                <h1 className="header">{ this.state.name }</h1>
+                <div className="sampler-container">
+                    <Sampler />
+                </div>
             </div>
         );
     }
