@@ -1,6 +1,7 @@
 import React from 'react';
 import Pad from './pad.jsx';
 import _ from 'lodash';
+import classNames from 'classnames';
 
 class Sampler extends React.Component {
     constructor() {
@@ -17,7 +18,8 @@ class Sampler extends React.Component {
             samplePads = samplePads.concat(
                 Array(width).fill({
                     type: e,
-                    trigger: false
+                    trigger: false,
+                    className: 'box inactive'
                 })
             );
         });
@@ -31,18 +33,23 @@ class Sampler extends React.Component {
         };
     }
     handleTrigger(i) {
-        this.state.pads[i].trigger = !this.state.pads[i].trigger;
-        console.log('play sound', this.state.pads[i]);
+        const newState = this.state;
+
+        newState.pads[i].trigger = !newState.pads[i].trigger;
+
+        newState.pads[i].className = newState.pads[i].trigger ? classNames('box active') : classNames('box inactive');
+
+        this.setState(newState);
     }
     renderPad(i) {
-        return <Pad value={ this.state.pads[i] } onClick={ () => this.handleTrigger(i) } />;
+        return <Pad inc={ i } sample={ this.state.pads[i] } onClick={ () => this.handleTrigger(i) } />;
     }
     render() {
         const padState = _.clone(this.state.pads);
 
         let pads = padState.map((sound, key) => {
             return (
-                <span key={key}>
+                <span key={ key }>
                     { this.renderPad(key) }
                 </span>
             )

@@ -13,10 +13,19 @@
         width: $box-size;
         display: inline-block;
         margin: 0px 3px 3px 0px;
-        background-color: $box-color;
 
         &:hover {
             background-color: darken($box-color, 20%);
+        }
+
+        &.active {
+
+            background-color: lighten($box-color, 15%);
+        }
+
+        &.inactive {
+
+            background-color: $box-color;
         }
     }
 }

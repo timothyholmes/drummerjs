@@ -10,7 +10,7 @@ class DrumMachine extends React.Component {
             controls: {
                 tempo: 120
             },
-            name: 'drummer'
+            name: ''
         }
     }
     render () {
