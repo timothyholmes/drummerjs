@@ -25,20 +25,21 @@ class Sampler extends React.Component {
         });
 
         this.state = {
-            pads: samplePads,
-            dimensions: {
-                width: width,
-                length: length
-            }
+            pads: samplePads
         };
     }
     handleTrigger(i) {
-        const newState = this.state;
+        const newState = _.clone(this.state);
+
+        console.log('i', i);
+        console.log('newState.pads[i]', newState.pads[i]);
 
         newState.pads[i].trigger = !newState.pads[i].trigger;
 
         newState.pads[i].className = newState.pads[i].trigger ? classNames('box active') : classNames('box inactive');
 
+        console.log('newState', newState);
+        console.log('this.state', this.state);
         this.setState(newState);
     }
     renderPad(i) {
