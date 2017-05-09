@@ -15,55 +15,61 @@ class DrumMachine extends React.Component {
         }
 
         // Bind methods to the component
-        this.adjustFlowControl = this.adjustFlowControl.bind(this);
-        this.adjustTempo = this.adjustTempo.bind(this);
+        this.adjustSingleStateProperty = this.adjustSingleStateProperty.bind(this);
+        this.play = this.play.bind(this);
+        this.pause = this.pause.bind(this);
+        this.stop = this.stop.bind(this);
         this.incrementTempo = this.incrementTempo.bind(this);
         this.decrementTempo = this.decrementTempo.bind(this);
     }
 
-    adjustFlowControl(i) {
+    adjustSingleStateProperty(newVal, prop) {
         const newState = _.clone(this.state);
 
-        if (newState.flowControl === i) {
+        if (newState[prop] === newVal) {
             return;
         }
 
-        newState.flowControl = i;
+        newState[prop] = newVal;
 
         this.setState(newState);
     }
 
-    adjustTempo(i) {
-        const newState = _.clone(this.state);
+    play() {
+        this.adjustSingleStateProperty(1, 'flowControl');
+    }
 
-        if (newState.tempo === i) {
-            return;
-        }
+    pause() {
+        this.adjustSingleStateProperty(-1, 'flowControl');
+    }
 
-        newState.tempo = i;
-
-        this.setState(newState);
+    stop() {
+        this.adjustSingleStateProperty(0, 'flowControl');
     }
 
     decrementTempo() {
-        this.adjustTempo(this.state.tempo - 1);
+        this.adjustSingleStateProperty(this.state.tempo - 1, 'tempo');
     }
 
     incrementTempo() {
-        this.adjustTempo(this.state.tempo + 1);
+        this.adjustSingleStateProperty(this.state.tempo + 1, 'tempo');
     }
 
     render () {
         return (
-            <div>
+            <div className="app-wrap">
                 <h1 className="header">{ this.state.name }</h1>
                     <ControlPanel
-                        flowControl={ this.adjustFlowControl }
+                        play={ this.play }
+                        pause={ this.pause }
+                        stop={ this.stop }
                         tempo={ this.state.tempo }
                         incTempo={ this.incrementTempo }
                         decTempo={ this.decrementTempo }/>
                 <div className="sampler-container">
-                    <Sampler />
+                    <Sampler
+                        tempo={ this.state.tempo }
+                        flowControl={ this.state.flowControl }/>
                 </div>
             </div>
         );

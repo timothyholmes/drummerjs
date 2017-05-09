@@ -4,14 +4,14 @@ import '../../public/main.css';
 
 function ControlPanel (props) {
     return (
-        <div>
-            <button onClick={ () => props.onClick(0) }>
+        <div className="control-panel">
+            <button onClick={ () => props.stop() }>
                 Stop
             </button>
-            <button onClick={ () => props.onClick(-1) }>
+            <button onClick={ () => props.pause() }>
                 Pause
             </button>
-            <button onClick={ () => props.onClick(1) }>
+            <button onClick={ () => props.play() }>
                 Play
             </button>
 

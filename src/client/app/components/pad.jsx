@@ -3,8 +3,10 @@ import '../../public/main.css';
 import classNames from 'classnames';
 
 function Pad (props) {
+    let classes = classNames('box', { active: props.toggle });
+
     return (
-        <button className={ props.sample.className }
+        <button className={ classes }
             onClick={ () => props.onClick() }>
         </button>
     );
