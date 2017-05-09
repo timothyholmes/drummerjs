@@ -12,21 +12,21 @@ class Sampler extends React.Component {
             length = 4;
 
         this.state = {
-            pads: Array(width * length).fill({
-                trigger: false
-            })
+            pads: Array(width * length).fill(false)
         };
 
     }
     handleTrigger(i) {
         let newState = _.clone(this.state);
 
-        newState.pads[i].toggle = !newState.pads[i].toggle;
+        newState.pads[i] = !newState.pads[i];
+
+        console.log('2', newState);
 
         this.setState(newState);
     }
-    renderPad(i, toggle) {
-        return <Pad toggle={ toggle } onClick={ () => this.handleTrigger(i) } />;
+    renderPad(i) {
+        return <Pad toggle={ this.state.pads[i] } onClick={ () => this.handleTrigger(i) } />;
     }
     render() {
         const padState = _.clone(this.state.pads);
@@ -34,7 +34,7 @@ class Sampler extends React.Component {
         let pads = padState.map((pad, key) => {
             return (
                 <span key={ key }>
-                    { this.renderPad(key, pad.trigger) }
+                    { this.renderPad(key) }
                 </span>
             )
         });
