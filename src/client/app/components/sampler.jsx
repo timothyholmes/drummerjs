@@ -21,8 +21,6 @@ class Sampler extends React.Component {
 
         newState.pads[i] = !newState.pads[i];
 
-        console.log('2', newState);
-
         this.setState(newState);
     }
     renderPad(i) {
